@@ -1,0 +1,197 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Feltpen.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://blue_button11.png" type="Texture" id=2]
+[ext_resource path="res://blue_button12.png" type="Texture" id=3]
+[ext_resource path="res://GameScene.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 52
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="AnagramGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game_Container" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 80
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Game_Container"]
+margin_right = 1024.0
+margin_bottom = 158.0
+
+[node name="Words_Created" type="Label" parent="Game_Container/HBoxContainer2"]
+margin_right = 920.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 158 )
+size_flags_horizontal = 3
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "_______________"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Game_Countdown" type="Label" parent="Game_Container/HBoxContainer2"]
+margin_left = 924.0
+margin_right = 1024.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 100, 158 )
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "25"
+autowrap = true
+uppercase = true
+
+[node name="Selected_Letters" type="Label" parent="Game_Container"]
+margin_top = 238.0
+margin_right = 1024.0
+margin_bottom = 393.0
+custom_fonts/font = SubResource( 2 )
+text = "placeholder"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game_Container"]
+margin_top = 473.0
+margin_right = 1024.0
+margin_bottom = 605.0
+alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="Game_Container/HBoxContainer"]
+margin_right = 947.0
+margin_bottom = 132.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game_Container/HBoxContainer"]
+margin_left = 951.0
+margin_right = 1024.0
+margin_bottom = 132.0
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Game_Container/HBoxContainer/VBoxContainer"]
+margin_top = 29.0
+margin_right = 73.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 73, 73 )
+size_flags_vertical = 0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
+
+[node name="GameTimer" type="Timer" parent="Game_Container"]
+
+[node name="Prompt_Screen" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 80
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prompt" type="Label" parent="Prompt_Screen"]
+margin_right = 1024.0
+margin_bottom = 155.0
+custom_fonts/font = SubResource( 2 )
+text = "Ache X palavras"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Start_Count_Down" type="Label" parent="Prompt_Screen"]
+margin_top = 235.0
+margin_right = 1024.0
+margin_bottom = 390.0
+custom_fonts/font = SubResource( 2 )
+text = "3"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Start_Timer" type="Timer" parent="Prompt_Screen"]
+autostart = true
+
+[node name="End_Screnn_Container" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="End_Message" type="Label" parent="End_Screnn_Container"]
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 158.0
+custom_fonts/font = SubResource( 4 )
+text = "PlaceHolder"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Final_Score" type="Label" parent="End_Screnn_Container"]
+margin_top = 258.0
+margin_right = 1024.0
+margin_bottom = 352.0
+custom_fonts/font = SubResource( 4 )
+text = "PlaceHolder"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="End_Screnn_Container"]
+margin_top = 452.0
+margin_right = 1024.0
+margin_bottom = 536.0
+alignment = 1
+
+[node name="Try_Again_BTN" type="Button" parent="End_Screnn_Container/HBoxContainer"]
+margin_left = 240.0
+margin_right = 783.0
+margin_bottom = 84.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
+text = "Jogar Novamente"
+[connection signal="text_entered" from="Game_Container/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="Game_Container/HBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="timeout" from="Game_Container/GameTimer" to="." method="_on_GameTimer_timeout"]
+[connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
+[connection signal="pressed" from="End_Screnn_Container/HBoxContainer/Try_Again_BTN" to="." method="_on_Try_Again_BTN_pressed"]

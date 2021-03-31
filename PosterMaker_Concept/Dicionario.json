@@ -1,0 +1,42 @@
+[
+	{
+		"Letters" : ["A", "L", "D", "E", "I", "A"],
+		"Possible_Words" : ["aldeia", "ideal", "adia", "dela", "leia", "lida", "lide", "ali", "dia", "ela", "ida", "lei"]
+	},
+	{
+		"Letters" : ["B", "O", "N", "D", "A", "D", "E"],
+		"Possible_Words" : ["bondade", "adendo", "debando", "aonde", "bando", "bonde", "dando", "donde", "ande", "ando", "bode", "dado", "dano", "dedo", "dona", "nabo", "nado", "onda", "onde", "ano", "boa", "doa", "doe", "ode"]
+	},
+	{
+		"Letters" : ["M", "A", "R", "F", "I", "M"],
+		"Possible_Words" : ["firmam", "marfim", "firam", "firma", "mimar", "miram", "rifam", "rimam", "afim", "fiar", "fira", "fria", "miam", "miar", "mima", "mira", "riam", "rifa", "rima", "fim", "iam", "ira", "mar", "mia", "ria"]
+	},
+	{
+		"Letters" : ["A", "V", "E", "N", "I", "D", "A"],
+		"Possible_Words" : ["avenida", "enviada", "evadia", "invada", "invade", "nevada", "vendia", "ainda", "andai", "andei", "aveia", "fria", "avida", "devia", "diana", "envia", "nadei", "vadia", "venda", "vendi", "viana", "viena", "vinda", "vinde", "adia", "adie", "anda", "ande", "dava", "davi", "deva", "devi", "diva", "nada", "nade", "nave", "neva", "vaia", "veda", "veia", "vida", "vide", "ave", "ana", "dei", "dai", "ida", "vai", "via"]
+	},
+	{
+		"Letters" : ["P", "L", "A", "C", "A", "S"],
+		"Possible_Words" : ["pascal", "placas", "calas", "capas", "casal", "caspa", "lasca", "placa", "alas", "aspa", "cala", "capa", "casa", "lapa", "saca", "sala", "ala", "asa", "cal", "sal"]
+	},
+	{
+		"Letters" : ["S", "O", "R", "T", "E"],
+		"Possible_Words" : ["resto", "setor", "sorte", "reto", "teor", "ser", "soe", "ter"]
+	},
+	{
+		"Letters" : ["V", "I", "A", "G", "E", "M"],
+		"Possible_Words" : ["viagem", "gemia", "meiga", "game", "vagem", "vaiem", "agem", "amei", "gema", "gemi", "meia", "veia", "viam", "viga", "age", "ame", "ave", "vai", "vem", "via", "vim"]
+	},
+	{
+		"Letters" : ["E", "S", "T", "U", "F", "A"],
+		"Possible_Words" : ["estufa", "ateus", "festa", "ateu", "atue", "esta", "fase", "seta", "teus", "tuas", "ate", "sua", "seu", "teu", "tua", "use", "usa"]
+	},
+	{
+		"Letters" : ["M", "O", "E", "D", "A"],
+		"Possible_Words" : ["moeda", "demo", "doam", "doem", "doma", "dome", "medo", "moda", "ame", "amo", "doa", "doe", "dom", "moa", "moe", "ode"]
+	},
+	{
+		"Letters" : ["C", "A", "T", "I", "V", "O"],
+		"Possible_Words" : ["cativo", "ativo", "tocai", "tocai", "cotai", "cavo", "cita", "cito", "cota", "cova", "taco", "toca", "vaio", "voai", "vota", "ato", "cai", "cio", "coa", "tia", "tio", "vai", "", "via", "voa"]
+	}
+]
