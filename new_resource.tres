@@ -7,4 +7,3 @@ script = ExtResource( 1 )
 Name = ""
 MiniGameTimer = 5
 Dificult = 1
-Type = 0

@@ -10,12 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "GameController",
+"language": "GDScript",
+"path": "res://GameController.gd"
+}, {
+"base": "Resource",
 "class": "MiniGameEntity",
 "language": "GDScript",
 "path": "res://MiniGameEntity.gd"
+}, {
+"base": "Resource",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
 } ]
 _global_script_class_icons={
-"MiniGameEntity": ""
+"GameController": "",
+"MiniGameEntity": "",
+"Player": ""
 }
 
 [application]

@@ -1,5 +1,7 @@
 extends Control
 
+const GameController = preload("res://GameController.tres")
+
 var selected_Letters = []
 var words_Found = []
 var start_Timer_CountDown = 3
@@ -9,7 +11,12 @@ var first_Word = true
 var game_CountDown
 
 
+
+
+
 func _ready():
+	print(GameController._MiniGame.Name)
+	
 	randomize()
 	var letters_Data_Bank = Get_From_Json("Dicionario.json");
 	selected_Letters = letters_Data_Bank[randi() % letters_Data_Bank.size()]
