@@ -1,22 +1,22 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://PosterMaker.gd" type="Script" id=1]
-[ext_resource path="res://Images/Button9Slice.png" type="Texture" id=2]
-[ext_resource path="res://Images/Button9SliceHover.png" type="Texture" id=3]
-[ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Images/Button9Slice.png" type="Texture" id=1]
+[ext_resource path="res://Images/Button9SliceHover.png" type="Texture" id=2]
+[ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Minigames/Poster_Maker/PosterMaker.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 15
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [node name="PosterMaker" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,8 +85,8 @@ alignment = 1
 margin_right = 8.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 8, 8 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 2 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
 expand = true
 
 [node name="GameTimer" type="Timer" parent="Game_Container"]

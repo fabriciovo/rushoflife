@@ -1,5 +1,6 @@
 extends Node2D
 
+
 signal GAMEOVER
 
 # MINIGAME POSTER_POSTING
@@ -7,6 +8,7 @@ signal GAMEOVER
 var timer = 2.0
 var difficult = 1
 var points = 0
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 onready var points_text = $Game/Points
 onready var timer_text = $Game/Timer
@@ -66,5 +68,9 @@ func game_loop(l_delta):
 	pole.scale = Vector2(1 * l_scale, 1 * l_scale)
 
 func _on_Button_pressed():
-	emit_signal("GAME_OVER")
-	self.queue_free()
+	Next_Scene()
+	
+	
+	
+func Next_Scene():
+	get_tree().change_scene(minigame_end)

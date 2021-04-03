@@ -1,9 +1,10 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://MiniGameEntity.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/MiniGameEntity.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
 Name = ""
 MiniGameTimer = 5
 Dificult = 1
+Type = 0

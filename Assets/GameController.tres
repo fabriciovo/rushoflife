@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+
+class_name GameController
+
+const _MiniGame = preload(\"res://Assets/MiniGameEntity.tres\")
+const _Player = preload(\"res://Assets/Player.tres\")
+
+export(int)var Level = 0
+export(int)var Stage = 0
+export(int)var Score = 0
+
+"
+
+[resource]
+script = SubResource( 1 )
+Level = 0
+Stage = 0
+Score = 0

@@ -1,22 +1,16 @@
 extends Control
 
-const GameController = preload("res://GameController.tres")
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 var selected_Letters = []
 var words_Found = []
 var start_Timer_CountDown = 3
-var dificulty = 5
+var dificulty = 1
 var words_Left
 var first_Word = true
 var game_CountDown
 
-
-
-
-
 func _ready():
-	print(GameController._MiniGame.Name)
-	
 	randomize()
 	var letters_Data_Bank = Get_From_Json("Dicionario.json");
 	selected_Letters = letters_Data_Bank[randi() % letters_Data_Bank.size()]
@@ -82,6 +76,7 @@ func Success_Screen():
 	$End_Screnn_Container.show()
 	$End_Screnn_Container/End_Message.text = "Voce conseguiu! Parabens!!!"
 	$End_Screnn_Container/Final_Score.text = str(dificulty - words_Left) + " palavras de: " + str(dificulty)
+	Next_Scene()
 	pass
 
 
@@ -90,6 +85,7 @@ func Fail_Screen():
 	$End_Screnn_Container.show()
 	$End_Screnn_Container/End_Message.text = "Voce falhou!!!"
 	$End_Screnn_Container/Final_Score.text = str(dificulty - words_Left) + " palavras de: " + str(dificulty)
+	Next_Scene()
 	pass
 
 
@@ -118,6 +114,8 @@ func Get_From_Json(fileName):
 	file.close()
 	return data
 
-
 func _on_Try_Again_BTN_pressed():
 	get_tree().reload_current_scene()
+	
+func Next_Scene():
+	get_tree().change_scene(minigame_end)

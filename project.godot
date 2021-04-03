@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "GameController",
 "language": "GDScript",
-"path": "res://GameController.gd"
+"path": "res://Scripts/GameController.gd"
 }, {
 "base": "Resource",
 "class": "MiniGameEntity",
 "language": "GDScript",
-"path": "res://MiniGameEntity.gd"
+"path": "res://Scripts/MiniGameEntity.gd"
 }, {
 "base": "Resource",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player.gd"
+"path": "res://Scripts/Player.gd"
 } ]
 _global_script_class_icons={
 "GameController": "",
@@ -33,8 +33,12 @@ _global_script_class_icons={
 [application]
 
 config/name="RushOfLife"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
 
 [display]
 
