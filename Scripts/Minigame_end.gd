@@ -1,12 +1,11 @@
 extends Node2D
 
-const gameController = preload("res://Assets/GameController.tres")
 
+const GameController = preload("res://Assets/GameController.tres")
 
 func _on_Button_pressed():
-	print(gameController.Level)
-	gameController.Level += 1
-	print(gameController.Level)
-	if(gameController.Level > 2):
-		gameController.Level = 0
+
+	GameController.Level += 1
+	print(GameController.Level)
+	
 	get_tree().change_scene("res://Scenes/MiniGame.tscn")

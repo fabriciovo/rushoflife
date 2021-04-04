@@ -1,23 +1,60 @@
 extends Node2D
 
-const gameController = preload("res://Assets/GameController.tres")
-
+const GameController = preload("res://Assets/GameController.tres")
 func _ready():
-	match  gameController.Level:
-		0:
-			Game_Menu()
-		1:
-			Poster_Posting()
-		2:
-			Poster_Maker()
+	Game_Loop()
+
+func Reset():
+	GameController.Level = 0
+	GameController.Stage = 0
+
+func Game_Loop():
+	
+	if(GameController.Stage == 0):
+		#start
+		Game_Menu()
+	if(GameController.Stage == 1):
+		match GameController.Level:
+			0:
+				Poster_Posting()
+			1:
+				Poster_Posting()
+			2: 
+				Poster_Posting()
+			3:
+				Game_Menu()
+	if(GameController.Stage == 2):
+		match GameController.Level:
+			0:
+				Poster_Posting()
+			1:
+				Poster_Posting()
+			2: 
+				Poster_Posting()
+			3:
+				Game_Menu()
+	if(GameController.Stage == 3):
+		match GameController.Level:
+			0:
+				Poster_Posting()
+			1:
+				Poster_Posting()
+			2: 
+				Poster_Posting()
+			3:
+				Game_Menu()
+	if(GameController.Stage ==4):
+		Reset()
+		Game_Menu()
+	
 
 func Poster_Maker():
-	var poster_maker = preload("res://Minigames/Poster_Maker/PosterMaker.tscn")
-	get_tree().change_scene_to(poster_maker)
+
+	get_tree().change_scene("res://Minigames/Poster_Maker/PosterMaker.tscn")
 
 func Poster_Posting():
-	var poster_posting = preload("res://Minigames/Poster_Posting/Poster_Posting.tscn")
-	get_tree().change_scene_to(poster_posting)
+
+	get_tree().change_scene("res://Minigames/Poster_Posting/Poster_Posting.tscn")
 	
 func Game_Menu():
 	var game_menu = "res://Scenes/GameMenu.tscn"

@@ -1,6 +1,6 @@
 extends Node2D
 
-const gameController = preload("res://Assets/GameController.tres")
+const GameController = preload("res://Assets/GameController.tres")
 var minigame = preload("res://Scenes/MiniGame.tscn")
 
 func _on_Next_pressed():
@@ -12,7 +12,9 @@ func _on_Back_pressed():
 
 
 func _on_StartMiniGame_pressed():
-	print(gameController.Level)
-	gameController.Level += 1
-	print(gameController.Level)
+	GameController.Stage += 1
+	print(GameController.Stage)
 	get_tree().change_scene_to(minigame)
+
+func _ready():
+	GameController.Level = 0
