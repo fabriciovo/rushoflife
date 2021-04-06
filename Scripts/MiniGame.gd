@@ -1,6 +1,7 @@
 extends Node2D
 
 const GameController = preload("res://Assets/GameController.tres")
+
 func _ready():
 	Game_Loop()
 
