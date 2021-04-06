@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-Name = ""
-MiniGameTimer = 5
+MiniGameTimer = 5.0
 Dificult = 1
 Type = 0
