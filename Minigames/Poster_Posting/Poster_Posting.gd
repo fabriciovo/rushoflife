@@ -1,12 +1,13 @@
 extends Node2D
 
-
 signal GAMEOVER
 
 # MINIGAME POSTER_POSTING
 
-var timer = 2.0
-var difficult = 1
+const GameController = preload("res://Assets/GameController.tres")
+
+var timer = GameController._MiniGame.MiniGameTimer
+var difficult = GameController._MiniGame.Dificult
 var points = 0
 var minigame_end = "res://Scenes/Minigame_end.tscn"
 
@@ -28,6 +29,7 @@ onready var button = $Game/Button
 func _ready():
 	direction = rng.randi_range(0, 1)
 	button.visible = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -73,4 +75,5 @@ func _on_Button_pressed():
 	
 	
 func Next_Scene():
+	GameController.Score += points
 	get_tree().change_scene(minigame_end)
