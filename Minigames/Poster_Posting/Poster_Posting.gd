@@ -19,17 +19,19 @@ onready var pole_collider = $Game/Pole/Area2D/CollisionShape2D
 
 var pole_distance = 0.0
 var pole_speedy = 1.0
-var pole_speedx = 12.0
+var pole_speedx = 24.0
 var rng = RandomNumberGenerator.new()
 var direction = 0
 
 onready var button = $Game/Button
 
+onready var bg1 = $Game/BG1
+onready var bg2 = $Game/BG2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	direction = rng.randi_range(0, 1)
 	button.visible = false
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -50,29 +52,37 @@ func _on_Pole_CLICKED(status):
 	pass # Replace with function body.
 
 func game_loop(l_delta):
-	if direction == 0:	# pole going to the left
-		pole.position.x -= pole_speedx * l_delta * difficult
-	else:				# pole going to the right
-		pole.position.x += pole_speedx * l_delta * difficult
-	
-	if pole_distance < 5:
-		pole_distance += pole_speedy * l_delta * difficult
-		if pole_distance >= 3 and pole_distance <= 4:
-			pole_collider.disabled = false
-		else:
-			pole_collider.disabled = true
-	elif pole_distance >= 5:
-		pole_distance = 0
-		pole.position.x = 45
-		direction = rng.randi_range(0, 1)
-		
-	var l_scale = (pole_distance / 5)
-	pole.scale = Vector2(1 * l_scale, 1 * l_scale)
+#
+#	if pole_distance < 5:
+#		pole_distance += pole_speedy * l_delta * difficult
+#		if pole_distance >= 3 and pole_distance <= 4:
+#			pole_collider.disabled = false
+#		else:
+#			pole_collider.disabled = true
+#	elif pole_distance >= 5:
+#		pole_distance = 0
+#		pole.position.x = 45
+#		direction = rng.randi_range(0, 1)
+#
+#	var l_scale = (pole_distance / 5)
+#	pole.scale = Vector2(1 * l_scale, 1 * l_scale)
+#	AnimateBG(l_delta)
+	pole.position.x -= pole_speedx * l_delta * difficult
+	if pole.position.x <= -10:
+#		pole_distance = 25
+		pole.position.x = 100
 
 func _on_Button_pressed():
 	Next_Scene()
 	
-	
+func AnimateBG(l_delta):
+	bg1.position.x -= 80 * l_delta
+	bg2.position.x -= 80 * l_delta
+	if bg1.position.x < -110:
+		bg1.position.x = 300
+	if bg2.position.x < -110:
+		bg2.position.x = 300
+		
 	
 func Next_Scene():
 	GameController.Score += points

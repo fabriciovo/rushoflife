@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Minigames/Poster_Posting/Poster_Posting.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Poster_Posting/Pole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pixel-art-street-99878701.jpg" type="Texture" id=3]
+[ext_resource path="res://Images/CharacterSheet.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "CharacterWalk"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 2 ]
+}
 
 [node name="Poster_Posting" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,8 +33,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BG1" type="Sprite" parent="Game"]
+position = Vector2( 100.552, 80.854 )
+scale = Vector2( 0.162758, 0.162758 )
+texture = ExtResource( 3 )
+
+[node name="BG2" type="Sprite" parent="Game"]
+position = Vector2( 311.217, 80.854 )
+scale = Vector2( 0.162758, 0.162758 )
+texture = ExtResource( 3 )
+
 [node name="Pole" parent="Game" instance=ExtResource( 2 )]
-position = Vector2( 45, 80 )
+position = Vector2( 90, 80 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game"]
+root_node = NodePath("CharacterSheet")
+autoplay = "CharacterWalk"
+playback_speed = 5.0
+anims/CharacterWalk = SubResource( 1 )
+
+[node name="CharacterSheet" type="Sprite" parent="Game/AnimationPlayer"]
+position = Vector2( 27.292, 96.7803 )
+texture = ExtResource( 4 )
+hframes = 4
+frame = 2
 
 [node name="Points" type="RichTextLabel" parent="Game"]
 margin_right = 90.0
