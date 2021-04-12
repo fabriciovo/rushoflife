@@ -1,3 +1,10 @@
-[gd_resource type="Resource" format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 
 [resource]
+script = ExtResource( 1 )
+Name = ""
+Money = 0
+Life = 3
+Sanity = 0
