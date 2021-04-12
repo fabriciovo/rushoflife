@@ -18,7 +18,6 @@ onready var pole = $Game/Pole
 onready var pole_collider = $Game/Pole/Area2D/CollisionShape2D
 
 var pole_distance = 0.0
-var pole_speedy = 1.0
 var pole_speedx = 24.0
 var rng = RandomNumberGenerator.new()
 var direction = 0
@@ -66,8 +65,13 @@ func game_loop(l_delta):
 #
 #	var l_scale = (pole_distance / 5)
 #	pole.scale = Vector2(1 * l_scale, 1 * l_scale)
-#	AnimateBG(l_delta)
+	AnimateBG(l_delta)
 	pole.position.x -= pole_speedx * l_delta * difficult
+	if pole.position.x < 40 and pole.position.x > 20:
+		pole_collider.disabled = false
+	else:
+		pole_collider.disabled = true
+	
 	if pole.position.x <= -10:
 #		pole_distance = 25
 		pole.position.x = 100
@@ -76,8 +80,8 @@ func _on_Button_pressed():
 	Next_Scene()
 	
 func AnimateBG(l_delta):
-	bg1.position.x -= 80 * l_delta
-	bg2.position.x -= 80 * l_delta
+	bg1.position.x -= pole_speedx * l_delta * difficult
+	bg2.position.x -= pole_speedx * l_delta * difficult
 	if bg1.position.x < -110:
 		bg1.position.x = 300
 	if bg2.position.x < -110:
