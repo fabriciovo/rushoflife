@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
 [ext_resource path="res://configico.png" type="Texture" id=2]
 [ext_resource path="res://BrazilMap.png" type="Texture" id=3]
+[ext_resource path="res://book_ico.png" type="Texture" id=4]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,21 +19,30 @@ __meta__ = {
 
 [node name="BrazilMap" type="Sprite" parent="Screen"]
 position = Vector2( 45, 80 )
-scale = Vector2( 0.146, 0.15 )
+scale = Vector2( 0.146, 0.16 )
 texture = ExtResource( 3 )
 
+[node name="ScoreBoard" type="RichTextLabel" parent="Screen"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 88.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Panel" type="Panel" parent="Screen"]
-margin_left = 5.0
-margin_top = 65.0
-margin_right = 84.0
-margin_bottom = 114.0
+margin_left = 4.86209
+margin_top = 110.192
+margin_right = 83.8621
+margin_bottom = 141.192
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GamePanel" type="PanelContainer" parent="Screen/Panel"]
-margin_right = 79.0
-margin_bottom = 50.0
+margin_right = 81.0
+margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,41 +50,44 @@ __meta__ = {
 [node name="StartMiniGame" type="Button" parent="Screen/Panel/GamePanel"]
 margin_left = 6.0
 margin_top = 4.0
-margin_right = 73.0
-margin_bottom = 46.0
+margin_right = 75.0
+margin_bottom = 26.0
+text = "Start Party"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Options" type="Button" parent="Screen"]
-margin_left = 80.0
-margin_top = 5.0
-margin_right = 988.0
-margin_bottom = 913.0
-rect_scale = Vector2( 0.007, 0.007 )
+margin_left = 73.6827
+margin_top = 31.183
+margin_right = 981.683
+margin_bottom = 939.183
+rect_scale = Vector2( 0.015, 0.015 )
 icon = ExtResource( 2 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Button" parent="Screen"]
-margin_left = 4.0
-margin_top = 120.528
-margin_right = 21.0
-margin_bottom = 139.528
+[node name="Album" type="Button" parent="Screen"]
+margin_left = 1.96978
+margin_top = 30.7175
+margin_right = 631.97
+margin_bottom = 423.717
+rect_scale = Vector2( 0.03, 0.036 )
+icon = ExtResource( 4 )
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Next" type="Button" parent="Screen"]
-margin_left = 67.0
-margin_top = 120.528
-margin_right = 84.0
-margin_bottom = 139.528
+[node name="Shop" type="Button" parent="Screen"]
+visible = false
+margin_left = 30.5929
+margin_top = 26.4501
+margin_right = 47.5929
+margin_bottom = 45.4501
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Screen/Panel/GamePanel/StartMiniGame" to="." method="_on_StartMiniGame_pressed"]
-[connection signal="pressed" from="Screen/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="Screen/Next" to="." method="_on_Next_pressed"]
