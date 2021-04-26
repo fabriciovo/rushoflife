@@ -75,6 +75,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="Game/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Game/OptionA" to="." method="_on_OptionA_pressed"]
 [connection signal="pressed" from="Game/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="pressed" from="Game/OptionC" to="." method="_on_OptionC_pressed"]

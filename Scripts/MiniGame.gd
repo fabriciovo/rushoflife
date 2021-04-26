@@ -19,7 +19,7 @@ func Game_Loop():
 			0:
 				Poster_Posting()
 			1:
-				Poster_Posting()
+				Barman()
 			2: 
 				Poster_Posting()
 			3:
@@ -29,7 +29,7 @@ func Game_Loop():
 			0:
 				Poster_Posting()
 			1:
-				Poster_Posting()
+				Barman()
 			2: 
 				Poster_Posting()
 			3:
@@ -39,7 +39,7 @@ func Game_Loop():
 			0:
 				Poster_Posting()
 			1:
-				Poster_Posting()
+				Barman()
 			2: 
 				Poster_Posting()
 			3:
@@ -50,13 +50,14 @@ func Game_Loop():
 	
 
 func Poster_Maker():
-
 	get_tree().change_scene("res://Minigames/Poster_Maker/PosterMaker.tscn")
 
 func Poster_Posting():
-
 	get_tree().change_scene("res://Minigames/Poster_Posting/Poster_Posting.tscn")
-	
+
+func Barman():
+	get_tree().change_scene("res://Minigames/Barman/Barman.tscn")
+
 func Game_Menu():
 	var game_menu = "res://Scenes/GameMenu.tscn"
 	get_tree().change_scene(game_menu)

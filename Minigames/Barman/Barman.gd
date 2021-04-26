@@ -2,7 +2,7 @@ extends Node2D
 
 signal GAMEOVER
 
-# MINIGAME POSTER_POSTING
+# MINIGAME BARMAN
 
 const GameController = preload("res://Assets/GameController.tres")
 
@@ -97,3 +97,8 @@ func sort_Answer(answer, wrongA, wrongB):
 		optA.text = str(wrongB)
 		optB.text = str(wrongA)
 		optC.text = str(answer)
+
+
+func _on_Button_pressed():
+	GameController.Score += points
+	get_tree().change_scene(minigame_end)
