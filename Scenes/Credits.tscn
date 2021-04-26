@@ -36,10 +36,10 @@ __meta__ = {
 
 [node name="CreditText" type="RichTextLabel" parent="Screen"]
 anchor_bottom = 0.052
-margin_left = 7.7937
-margin_top = 63.5244
-margin_right = 83.7937
-margin_bottom = 99.2044
+margin_left = 8.0
+margin_top = 64.0
+margin_right = 84.0
+margin_bottom = 103.68
 text = "   Developers:
 
  Fabricio Oliveira
