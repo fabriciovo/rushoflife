@@ -81,6 +81,5 @@ margin_bottom = 81.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="CLICKED" from="Game/Pole" to="." method="_on_Pole_CLICKED"]
 [connection signal="pressed" from="Game/Button" to="." method="_on_Button_pressed"]
