@@ -5,7 +5,7 @@ var minigame_end = "res://Scenes/Minigame_end.tscn"
 var selected_Letters = []
 var words_Found = []
 var start_Timer_CountDown = 3
-var dificulty = 1
+var difficulty = 5
 var words_Left
 var first_Word = true
 var game_CountDown
@@ -15,8 +15,8 @@ func _ready():
 	var letters_Data_Bank = Get_From_Json("Dicionario.json");
 	selected_Letters = letters_Data_Bank[randi() % letters_Data_Bank.size()]
 	selected_Letters.Letters.shuffle()
-	words_Left = dificulty
-	$Prompt_Screen/Prompt.text = "Ache " + str(dificulty) + " palavras"
+	words_Left = difficulty
+	$Prompt_Screen/Prompt.text = "Ache " + str(difficulty) + " palavras"
 #	SETANDO O TEMPO QUE O JGADOR TEM PARA ACHAR AS PALAVRAS, PODE SER MUDADO TROCANDO O TEMPO NA CENA
 	game_CountDown = int($Game_Container/HBoxContainer2/Game_Countdown.text)
 
@@ -75,7 +75,7 @@ func Success_Screen():
 	$Game_Container.queue_free()
 	$End_Screnn_Container.show()
 	$End_Screnn_Container/End_Message.text = "Voce conseguiu! Parabens!!!"
-	$End_Screnn_Container/Final_Score.text = str(dificulty - words_Left) + " palavras de: " + str(dificulty)
+	$End_Screnn_Container/Final_Score.text = str(difficulty - words_Left) + " palavras de: " + str(difficulty)
 	Next_Scene()
 	pass
 
@@ -84,7 +84,7 @@ func Fail_Screen():
 	$Game_Container.queue_free()
 	$End_Screnn_Container.show()
 	$End_Screnn_Container/End_Message.text = "Voce falhou!!!"
-	$End_Screnn_Container/Final_Score.text = str(dificulty - words_Left) + " palavras de: " + str(dificulty)
+	$End_Screnn_Container/Final_Score.text = str(difficulty - words_Left) + " palavras de: " + str(difficulty)
 	Next_Scene()
 	pass
 
