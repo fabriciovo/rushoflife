@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Images/Title.png" type="Texture" id=2]
 [ext_resource path="res://Images/TitleBackground.png" type="Texture" id=3]
 
-[node name="MainMenu" type="Node2D"]
+[node name="Credits" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Screen" type="Control" parent="."]
@@ -24,35 +24,31 @@ position = Vector2( 43.2148, 22.2889 )
 scale = Vector2( 1.33588, 1.33588 )
 texture = ExtResource( 2 )
 
-[node name="StartGame" type="Button" parent="Screen"]
-margin_left = 6.37457
-margin_top = 65.0
-margin_right = 86.3746
-margin_bottom = 80.0
-text = "Start Game"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" type="Button" parent="Screen"]
-margin_left = 6.0
-margin_top = 95.0
-margin_right = 86.0
-margin_bottom = 110.0
-text = "Options"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Credits" type="Button" parent="Screen"]
+[node name="Back" type="Button" parent="Screen"]
 margin_left = 6.0
 margin_top = 125.0
 margin_right = 86.0
 margin_bottom = 140.0
-text = "Credits"
+text = "Title"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Screen/StartGame" to="." method="_on_StartGame_pressed"]
-[connection signal="pressed" from="Screen/Credits" to="." method="_on_Credits_pressed"]
+[node name="CreditText" type="RichTextLabel" parent="Screen"]
+anchor_bottom = 0.052
+margin_left = 7.7937
+margin_top = 63.5244
+margin_right = 83.7937
+margin_bottom = 99.2044
+text = "   Developers:
+
+ Fabricio Oliveira
+
+  Isamu Sato
+
+Rodrigo Wiebbelling"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Screen/Back" to="." method="_on_Back_pressed"]
