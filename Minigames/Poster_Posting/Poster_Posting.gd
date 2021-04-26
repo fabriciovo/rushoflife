@@ -6,8 +6,10 @@ signal GAMEOVER
 
 const GameController = preload("res://Assets/GameController.tres")
 
-var timer = GameController._MiniGame.MiniGameTimer
-var difficult = GameController._MiniGame.Dificult
+#var timer = GameController._MiniGame.MiniGameTimer
+#var difficult = GameController._MiniGame.Dificult
+var timer = GameController._MiniGame.MiniGameTimer / GameController._MiniGame.Dificult
+var difficult = 3
 var points = 0
 var minigame_end = "res://Scenes/Minigame_end.tscn"
 

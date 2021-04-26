@@ -90,4 +90,5 @@ margin_bottom = 45.4501
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Screen/Panel/GamePanel/StartMiniGame" to="." method="_on_StartMiniGame_pressed"]

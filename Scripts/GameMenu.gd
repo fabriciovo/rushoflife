@@ -11,7 +11,7 @@ func _ready():
 
 func _on_StartMiniGame_pressed():
 	GameController.Stage += 1
-	GameController._MiniGame.set_Timer(2.0)
+	GameController._MiniGame.set_Timer(30.0)
 	GameController._MiniGame.set_Dificult(1)
 	print(GameController.Stage)
 #	GameController.test += 1
