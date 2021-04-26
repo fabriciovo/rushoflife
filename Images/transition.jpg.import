@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/configico.png-e96bfd2d6535f9301a8421f55b354b25.stex"
+path="res://.import/transition.jpg-f9b89d3328fe8c2e5c85bcaf7cc5af69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://configico.png"
-dest_files=[ "res://.import/configico.png-e96bfd2d6535f9301a8421f55b354b25.stex" ]
+source_file="res://Images/transition.jpg"
+dest_files=[ "res://.import/transition.jpg-f9b89d3328fe8c2e5c85bcaf7cc5af69.stex" ]
 
 [params]
 

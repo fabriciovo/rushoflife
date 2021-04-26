@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BrazilMap.png-df492269235e642b707dc3999c0416f6.stex"
+path="res://.import/configico.png-9baa852f77fa6bcff49333b95b0a8fc6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BrazilMap.png"
-dest_files=[ "res://.import/BrazilMap.png-df492269235e642b707dc3999c0416f6.stex" ]
+source_file="res://Images/configico.png"
+dest_files=[ "res://.import/configico.png-9baa852f77fa6bcff49333b95b0a8fc6.stex" ]
 
 [params]
 

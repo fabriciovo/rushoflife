@@ -11,7 +11,7 @@ const GameController = preload("res://Assets/GameController.tres")
 var timer = GameController._MiniGame.MiniGameTimer / GameController._MiniGame.Dificult
 var difficult = 3
 var points = 0
-var minigame_end = "res://Scenes/Minigame_end.tscn"
+var minigame_end = "res://Scenes/PartyTransition.tscn"
 
 onready var points_text = $Game/Points
 onready var timer_text = $Game/Timer
@@ -27,6 +27,9 @@ var answer = 0
 var sorted = false
 
 enum {BEER, VODKA, TEQUILA, WINE, RUM, ABSINT, SHOT}
+
+func _ready():
+	button.visible = false
 
 func _process(delta):
 	points_text.text = str(points)

@@ -1,7 +1,8 @@
 extends Node2D
 
 const GameController = preload("res://Assets/GameController.tres")
-var minigame = preload("res://Scenes/MiniGame.tscn")
+#var minigame = preload("res://Scenes/MiniGame.tscn")
+var minigame = preload("res://Scenes/PartyTransition.tscn")
 
 onready var scoreBoard = $Screen/ScoreBoard
 
@@ -11,7 +12,7 @@ func _ready():
 
 func _on_StartMiniGame_pressed():
 	GameController.Stage += 1
-	GameController._MiniGame.set_Timer(30.0)
+	GameController._MiniGame.set_Timer(1.0)
 	GameController._MiniGame.set_Dificult(1)
 	print(GameController.Stage)
 #	GameController.test += 1

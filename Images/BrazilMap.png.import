@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/book_ico.png-64defe7f643a149060a2e78dc557b3bd.stex"
+path="res://.import/BrazilMap.png-5236421db27f177364952a251f85b148.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://book_ico.png"
-dest_files=[ "res://.import/book_ico.png-64defe7f643a149060a2e78dc557b3bd.stex" ]
+source_file="res://Images/BrazilMap.png"
+dest_files=[ "res://.import/BrazilMap.png-5236421db27f177364952a251f85b148.stex" ]
 
 [params]
 

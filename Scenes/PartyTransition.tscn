@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/PartyTransition.gd" type="Script" id=1]
+[ext_resource path="res://Images/transition.jpg" type="Texture" id=2]
+[ext_resource path="res://qmark.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 90.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransitionBackground" type="Sprite" parent="Control"]
+position = Vector2( 42.8809, 79.3749 )
+scale = Vector2( 0.141352, 0.623616 )
+texture = ExtResource( 2 )
+
+[node name="Phase1" type="Sprite" parent="Control"]
+position = Vector2( 25.0641, 46.242 )
+scale = Vector2( 0.0317099, 0.0204247 )
+texture = ExtResource( 3 )
+
+[node name="Phase2" type="Sprite" parent="Control"]
+position = Vector2( 68.1977, 73.4656 )
+scale = Vector2( 0.0317099, 0.0204247 )
+texture = ExtResource( 3 )
+
+[node name="Phase3" type="Sprite" parent="Control"]
+position = Vector2( 24.7106, 102.457 )
+scale = Vector2( 0.0317099, 0.0204247 )
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = 10.0
+margin_top = 120.498
+margin_right = 84.0
+margin_bottom = 138.498
+text = "Next minigame"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]

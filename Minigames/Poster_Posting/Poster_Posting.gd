@@ -9,7 +9,7 @@ const GameController = preload("res://Assets/GameController.tres")
 var timer = GameController._MiniGame.MiniGameTimer
 var difficult = GameController._MiniGame.Dificult
 var points = 0
-var minigame_end = "res://Scenes/Minigame_end.tscn"
+var minigame_end = "res://Scenes/PartyTransition.tscn"
 
 onready var points_text = $Game/Points
 onready var timer_text = $Game/Timer

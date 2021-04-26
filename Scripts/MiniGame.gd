@@ -16,33 +16,33 @@ func Game_Loop():
 		Game_Menu()
 	if(GameController.Stage == 1):
 		match GameController.Level:
-			0:
-				Poster_Posting()
 			1:
-				Barman()
-			2: 
 				Poster_Posting()
-			3:
+			2:
+				Barman()
+			3: 
+				Poster_Posting()
+			4:
 				Game_Menu()
 	if(GameController.Stage == 2):
 		match GameController.Level:
-			0:
-				Poster_Posting()
 			1:
-				Barman()
-			2: 
 				Poster_Posting()
-			3:
+			2:
+				Barman()
+			3: 
+				Poster_Posting()
+			4:
 				Game_Menu()
 	if(GameController.Stage == 3):
 		match GameController.Level:
-			0:
-				Poster_Posting()
 			1:
-				Barman()
-			2: 
 				Poster_Posting()
-			3:
+			2:
+				Barman()
+			3: 
+				Poster_Posting()
+			4:
 				Game_Menu()
 	if(GameController.Stage ==4):
 		Reset()
