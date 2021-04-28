@@ -1,5 +1,7 @@
 extends Node2D
 
+var minigame_end = "res://Scenes/PartyTransition.tscn"
+
 var score = 0
 var max_Score = 100
 var start_Timer_CountDown = 3
@@ -32,6 +34,7 @@ func End_Game():
 		$End_Screen/End_Message.text = "Voce falhou!"
 	
 	$End_Screen/End_Points.text = str(score) + "/" + str(max_Score)
+	Next_Scene()
 
 func _on_Urinal_Collision_area_entered(area):
 	if !game_Over:
@@ -63,3 +66,8 @@ func _on_GameTimer_timeout():
 	
 	if miniGame_Timer <= 0:
 		End_Game()
+
+	
+func Next_Scene():
+	get_tree().change_scene(minigame_end)
+

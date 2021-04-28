@@ -1,11 +1,11 @@
 extends Control
 
-var minigame_end = "res://Scenes/Minigame_end.tscn"
+var minigame_end = "res://Scenes/PartyTransition.tscn"
 
 var selected_Letters = []
 var words_Found = []
 var start_Timer_CountDown = 3
-var difficulty = 5
+var difficulty = 1
 var words_Left
 var first_Word = true
 var game_CountDown
@@ -115,7 +115,8 @@ func Get_From_Json(fileName):
 	return data
 
 func _on_Try_Again_BTN_pressed():
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	get_tree().change_scene(minigame_end)
 	
 func Next_Scene():
 	get_tree().change_scene(minigame_end)

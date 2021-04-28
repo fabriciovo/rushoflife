@@ -20,14 +20,14 @@ radius = 1.57964
 radius = 7.56036
 height = 4.88062
 
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=4]
-size = 10
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 20
 font_data = ExtResource( 4 )
 
@@ -37,7 +37,7 @@ script = ExtResource( 5 )
 [node name="Game_Screen" type="Node2D" parent="."]
 
 [node name="BathroomWall2" type="Sprite" parent="Game_Screen"]
-position = Vector2( 47.7856, 83.9817 )
+position = Vector2( 36, 65 )
 scale = Vector2( 0.328883, 0.341539 )
 texture = ExtResource( 6 )
 
@@ -160,7 +160,7 @@ margin_left = 61.236
 margin_top = 13.4719
 margin_right = 90.236
 margin_bottom = 38.4719
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "10"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -186,7 +186,7 @@ texture = ExtResource( 9 )
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
 margin_bottom = 47.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Acerte o Mictório Sem Cair!"
 align = 1
 valign = 1
@@ -199,7 +199,7 @@ __meta__ = {
 margin_top = 67.0
 margin_right = 90.0
 margin_bottom = 96.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "3"
 align = 1
 autowrap = true
@@ -241,6 +241,14 @@ margin_bottom = 50.0
 text = "100/100"
 align = 1
 
+[node name="NextMinigame" type="Button" parent="End_Screen"]
+margin_right = 4.0
+margin_bottom = 8.0
+text = "Next Minigame"
+__meta__ = {
+"_editor_description_": ""
+}
+
 [connection signal="area_entered" from="Game_Screen/Urinal/Urinal_Collision" to="." method="_on_Urinal_Collision_area_entered"]
 [connection signal="area_exited" from="Game_Screen/Urinal/Urinal_Collision" to="." method="_on_Urinal_Collision_area_exited"]
 [connection signal="timeout" from="Game_Screen/GameTimer" to="." method="_on_GameTimer_timeout"]
@@ -248,3 +256,4 @@ align = 1
 [connection signal="button_down" from="Game_Screen/UI_Holder/Left_Btn" to="Game_Screen/PeeingGuy" method="_on_Left_Btn_button_down"]
 [connection signal="button_down" from="Game_Screen/UI_Holder/Right_Btn" to="Game_Screen/PeeingGuy" method="_on_Right_Btn_button_down"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
+[connection signal="button_down" from="End_Screen/NextMinigame" to="." method="_on_NextMinigame_button_down"]

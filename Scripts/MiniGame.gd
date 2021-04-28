@@ -19,30 +19,22 @@ func Game_Loop():
 			1:
 				Poster_Posting()
 			2:
-				Barman()
+				Poster_Maker()
 			3: 
-				Poster_Posting()
-			4:
 				Game_Menu()
 	if(GameController.Stage == 2):
 		match GameController.Level:
 			1:
-				Poster_Posting()
-			2:
 				Barman()
+			2:
+				Pissing_Game()
 			3: 
-				Poster_Posting()
+				Beer_Pong()
 			4:
 				Game_Menu()
 	if(GameController.Stage == 3):
 		match GameController.Level:
 			1:
-				Poster_Posting()
-			2:
-				Barman()
-			3: 
-				Poster_Posting()
-			4:
 				Game_Menu()
 	if(GameController.Stage ==4):
 		Reset()
@@ -55,9 +47,14 @@ func Poster_Maker():
 func Poster_Posting():
 	get_tree().change_scene("res://Minigames/Poster_Posting/Poster_Posting.tscn")
 
+func Beer_Pong():
+	get_tree().change_scene("res://Minigames/Beer_Pong/Beer_Pong.tscn")
+
+
 func Barman():
 	get_tree().change_scene("res://Minigames/Barman/Barman.tscn")
-
+func Pissing_Game():
+	get_tree().change_scene("res://Minigames/Pissing_Game/PissingGame.tscn")
 func Game_Menu():
 	var game_menu = "res://Scenes/GameMenu.tscn"
 	get_tree().change_scene(game_menu)

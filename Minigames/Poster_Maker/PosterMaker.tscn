@@ -5,11 +5,11 @@
 [ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Minigames/Poster_Maker/PosterMaker.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 10
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 3 )
 
@@ -101,18 +101,18 @@ __meta__ = {
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
-margin_bottom = 43.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
 text = "Ache X palavras"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="Start_Count_Down" type="Label" parent="Prompt_Screen"]
-margin_top = 73.0
+margin_top = 63.0
 margin_right = 90.0
-margin_bottom = 102.0
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 2 )
 text = "3"
 align = 1
 autowrap = true
@@ -157,6 +157,7 @@ margin_left = 12.0
 margin_right = 78.0
 margin_bottom = 8.0
 text = "Tente Novamente"
+
 [connection signal="text_entered" from="Game_Container/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="timeout" from="Game_Container/GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
