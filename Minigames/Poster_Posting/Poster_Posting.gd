@@ -89,5 +89,13 @@ func AnimateBG(l_delta):
 		
 	
 func Next_Scene():
-	GameController.Score += points
+	var img = get_viewport().get_texture().get_data()
+	yield(get_tree(), "idle_frame")
+#	yield(get_tree(), "idle_frame")
+	var tex = ImageTexture.new()
+	tex.create_from_image(img)
+
+	GameController.TransitionImage0 = tex
+
+	GameController.Score += points	
 	get_tree().change_scene(minigame_end)
