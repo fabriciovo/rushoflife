@@ -5,7 +5,7 @@
 [ext_resource path="res://Images/pong.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Pong.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Minigames/Beer_Pong/PongController.gd" type="Script" id=5]
-[ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Fonts/PixelRPG.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 3 )

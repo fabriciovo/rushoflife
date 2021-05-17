@@ -1,8 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://PixelRPG.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/ka1.ttf" type="DynamicFontData" id=1]
 
 [resource]
 size = 6
-extra_spacing_bottom = -2
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 1
 font_data = ExtResource( 1 )
