@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Minigames/open_the_door/open_the_door.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="door" type="Node2D" parent="."]
+
+[node name="s_door" type="Sprite" parent="door"]
+
+[node name="t_door_lock" type="Timer" parent="."]
+wait_time = 0.019
+autostart = true
+
+[connection signal="timeout" from="t_door_lock" to="." method="_on_t_door_lock_timeout"]

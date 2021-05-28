@@ -1,18 +1,35 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Minigames/Beer_Pong/Beer_Pong.gd" type="Script" id=1]
 [ext_resource path="res://Images/Character_Standing.png" type="Texture" id=2]
 [ext_resource path="res://Images/pong.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Pong.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Minigames/Beer_Pong/PongController.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/PixelRPG.ttf" type="DynamicFontData" id=6]
 
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+onready var pong = $Pong
+
+
+
+
+"
+
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 3 )
+extents = Vector2( 4, 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 6 )
+
+[sub_resource type="GDScript" id=3]
+
+[sub_resource type="SegmentShape2D" id=5]
+b = Vector2( 90, 0 )
+
+[sub_resource type="SegmentShape2D" id=6]
+a = Vector2( -1, -151 )
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -27,7 +44,7 @@ offset = Vector2( -3.20003, 0.000152588 )
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 23, 138 )
-script = ExtResource( 5 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -36,6 +53,8 @@ __meta__ = {
 texture = ExtResource( 2 )
 
 [node name="Pong" parent="Player" instance=ExtResource( 4 )]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Player/Pong"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 position = Vector2( 80, 132 )
@@ -73,5 +92,36 @@ autowrap = true
 [node name="Start_Timer" type="Timer" parent="Prompt_Screen"]
 autostart = true
 
+[node name="pong_timer" type="Timer" parent="Prompt_Screen"]
+wait_time = 0.5
+autostart = true
+
+[node name="pong_force" type="Label" parent="Prompt_Screen"]
+margin_top = 59.0
+margin_right = 90.0
+margin_bottom = 75.0
+text = "Force: 0"
+script = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="viewport1" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="viewport1"]
+position = Vector2( 0, 161 )
+shape = SubResource( 5 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 162 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D2"]
+position = Vector2( 90, -12 )
+shape = SubResource( 6 )
+
+[connection signal="screen_exited" from="Player/Pong/VisibilityNotifier2D" to="Player/Pong" method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
+[connection signal="timeout" from="Prompt_Screen/pong_timer" to="Player/Pong" method="_on_Pong_timeout"]
+[connection signal="timeout" from="Prompt_Screen/pong_timer" to="." method="_on_pong_timer_timeout"]
+[connection signal="timeout" from="Prompt_Screen/pong_timer" to="Prompt_Screen/pong_force" method="_on_Pong_timeout"]

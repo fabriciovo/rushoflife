@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Urinal.png" type="Texture" id=1]
 [ext_resource path="res://PeeingGuy.png" type="Texture" id=2]
@@ -21,14 +21,6 @@ radius = 7.56036
 height = 4.88062
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 10
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 20
 font_data = ExtResource( 4 )
 
 [node name="PissingGame" type="Node2D"]
@@ -185,8 +177,7 @@ texture = ExtResource( 9 )
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
-margin_bottom = 47.0
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 27.0
 text = "Acerte o Mictório Sem Cair!"
 align = 1
 valign = 1
@@ -195,20 +186,20 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Start_Timer" type="Timer" parent="Prompt_Screen"]
+autostart = true
+
 [node name="Start_CountDown" type="Label" parent="Prompt_Screen"]
-margin_top = 67.0
+margin_top = 47.0
 margin_right = 90.0
-margin_bottom = 96.0
-custom_fonts/font = SubResource( 6 )
+margin_bottom = 63.0
 text = "3"
 align = 1
 autowrap = true
 __meta__ = {
+"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
-
-[node name="Start_Timer" type="Timer" parent="Prompt_Screen"]
-autostart = true
 
 [node name="End_Screen" type="VBoxContainer" parent="."]
 visible = false
