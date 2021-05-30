@@ -18,17 +18,23 @@ onready var timer_text = $Game/Timer
 
 onready var button = $Game/Button
 
-onready var optA = $Game/OptionA
-onready var optB = $Game/OptionB
-onready var optC = $Game/OptionC
-onready var aLab = $Game/Order
+onready var optA = [$Game/OptionA, 0]
+onready var optB = [$Game/OptionB, 0]
+onready var optC = [$Game/OptionC, 0]
+onready var aLab = $Game/Panel/Order
 
 var answer = 0
 var sorted = false
 
-enum {BEER, VODKA, TEQUILA, WINE, RUM, ABSINT, SHOT}
+enum {BEER, VODKA, TEQUILA, WINE, RUM, ABSINT}
+
+var drinks: Array
 
 func _ready():
+	optA[0].rect_scale *= 0.6
+	optB[0].rect_scale *= 0.6
+	optC[0].rect_scale *= 0.6
+	load_Drinks()
 	button.visible = false
 
 func _process(delta):
@@ -39,6 +45,7 @@ func _process(delta):
 	if timer > 0:
 		game_loop(delta)
 	else:
+		disable()
 		points_text.text = "Record: " + str(points)
 		timer_text.text = "GAME OVER"
 		button.visible = true
@@ -46,23 +53,24 @@ func _process(delta):
 func game_loop(l_delta):
 	if sorted == false:
 		sort_Value()
+		assign_Imgs()
 
 func _on_OptionA_pressed():
-	if int(float(optA.text)) == answer:
+	if optA[1] == answer:
 		points += 1
 	else:
 		points -= 1
 	sorted = false
 
 func _on_OptionB_pressed():
-	if int(float(optB.text)) == answer:
+	if optB[1] == answer:
 		points += 1
 	else:
 		points -= 1
 	sorted = false
 
 func _on_OptionC_pressed():
-	if int(float(optC.text)) == answer:
+	if optC[1] == answer:
 		points += 1
 	else:
 		points -= 1
@@ -71,16 +79,16 @@ func _on_OptionC_pressed():
 func sort_Value():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var sort = rng.randi_range(BEER, SHOT)
+	var sort = rng.randi_range(BEER, ABSINT)
 	answer = sort
 	var sort2 = sort
 	while sort2 == sort:
-		sort2 = rng.randi_range(BEER, SHOT)
+		sort2 = rng.randi_range(BEER, ABSINT)
 	var sort3 = sort
 	while sort3 == sort or sort3 == sort2:
-		sort3 = rng.randi_range(BEER, SHOT)
+		sort3 = rng.randi_range(BEER, ABSINT)
 	
-	aLab.text = str(answer)
+	aLab.texture = drinks[answer]
 	sort_Answer(sort, sort2, sort3)
 	sorted = true
 
@@ -89,19 +97,43 @@ func sort_Answer(answer, wrongA, wrongB):
 	rng.randomize()
 	var sort = rng.randi_range(1, 3)
 	if sort == 1:
-		optA.text = str(answer)
-		optB.text = str(wrongA)
-		optC.text = str(wrongB)
+		optA[1] = answer
+		optB[1] = wrongA
+		optC[1] = wrongB
 	elif sort == 2:
-		optA.text = str(wrongA)
-		optB.text = str(answer)
-		optC.text = str(wrongB)
+		optA[1] = wrongA
+		optB[1] = answer
+		optC[1] = wrongB
 	elif sort == 3:
-		optA.text = str(wrongB)
-		optB.text = str(wrongA)
-		optC.text = str(answer)
-
+		optA[1] = wrongB
+		optB[1] = wrongA
+		optC[1] = answer
 
 func _on_Button_pressed():
 	GameController.Score += points
 	get_tree().change_scene(minigame_end)
+
+func load_Drinks():
+	var beer = load("res://Minigames/Barman/Images/Drinks/Beer.png")
+	var coke = load("res://Minigames/Barman/Images/Drinks/Coke.png")
+	var shot = load("res://Minigames/Barman/Images/Drinks/shot.png")
+	var tequila = load("res://Minigames/Barman/Images/Drinks/tequila.png")
+	var whater = load("res://Minigames/Barman/Images/Drinks/whater.png")
+	var whine = load("res://Minigames/Barman/Images/Drinks/whine.png")
+	drinks.append(beer)
+	drinks.append(coke)
+	drinks.append(shot)
+	drinks.append(tequila)
+	drinks.append(whater)
+	drinks.append(whine)
+
+func assign_Imgs():
+	optA[0].icon = drinks[optA[1]]
+	optB[0].icon = drinks[optB[1]]
+	optC[0].icon = drinks[optC[1]]
+
+func disable():
+	optA[0].disabled = true
+	optB[0].disabled = true
+	optC[0].disabled = true
+	

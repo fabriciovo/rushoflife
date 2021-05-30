@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Minigames/Barman/Barman.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/Barman/Images/BarBottles.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/Barman/Images/BrickWall.png" type="Texture" id=3]
+[ext_resource path="res://Minigames/Barman/Images/BarCounter.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/Barman/Images/BarmanSheet.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Bartender"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [node name="Barman" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,6 +35,29 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background" type="Sprite" parent="Game"]
+position = Vector2( 7.38724, 76.1295 )
+texture = ExtResource( 3 )
+
+[node name="BarBottles" type="Sprite" parent="Game/Background"]
+position = Vector2( 37.2382, -26.5041 )
+texture = ExtResource( 2 )
+
+[node name="BarmanSheet" type="Sprite" parent="Game/Background"]
+position = Vector2( 34.6989, 7.22141 )
+scale = Vector2( 1.59094, 1.59094 )
+texture = ExtResource( 5 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game/Background/BarmanSheet"]
+autoplay = "Bartender"
+method_call_mode = 1
+anims/Bartender = SubResource( 1 )
+
+[node name="Counter" type="Sprite" parent="Game/Background"]
+position = Vector2( 37.6128, 28.8705 )
+texture = ExtResource( 4 )
 
 [node name="Points" type="RichTextLabel" parent="Game"]
 margin_right = 90.0
@@ -35,6 +79,7 @@ margin_left = 14.0
 margin_top = 73.0
 margin_right = 77.0
 margin_bottom = 81.0
+text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -66,14 +111,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Order" type="Label" parent="Game"]
-margin_top = 27.3441
-margin_right = 22.0
-margin_bottom = 39.3441
-text = "Test"
+[node name="Panel" type="Panel" parent="Game"]
+self_modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+margin_left = 3.0
+margin_top = 27.0
+margin_right = 29.0
+margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Order" type="Sprite" parent="Game/Panel"]
+position = Vector2( 13, 13 )
+scale = Vector2( 0.75, 0.75 )
 
 [connection signal="pressed" from="Game/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Game/OptionA" to="." method="_on_OptionA_pressed"]
