@@ -38,10 +38,13 @@ func _on_Button_pressed():
 func prepare_Phase(phase: Sprite, phaseNumber:int, level: int, gcImage: Texture):
 	if phaseNumber == level:
 		phase.modulate = Color(1, 1, 1)
+		pass
 	else:
 		phase.modulate = Color(0.2, 0.2, 0.2)
+		pass
 	
 	if gcImage != null:
 		phase.texture = gcImage
 		var size = phase.texture.get_size()
 		phase.scale = Vector2(40 / size.x, 40 / size.y * -1)
+		pass

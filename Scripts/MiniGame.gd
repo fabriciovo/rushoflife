@@ -35,8 +35,10 @@ func Game_Loop():
 	if(GameController.Stage == 3):
 		match GameController.Level:
 			1:
+				Door_game()
+			2:
 				Game_Menu()
-	if(GameController.Stage ==4):
+	if(GameController.Stage == 4):
 		Reset()
 		Game_Menu()
 	
@@ -55,8 +57,14 @@ func Barman():
 	get_tree().change_scene("res://Minigames/Barman/Barman.tscn")
 func Pissing_Game():
 	get_tree().change_scene("res://Minigames/Pissing_Game/PissingGame.tscn")
+
+
 func Game_Menu():
 	var game_menu = "res://Scenes/GameMenu.tscn"
 	get_tree().change_scene(game_menu)
 
+
+func Door_game():
+	var game_menu = "res://Minigames/open_the_door/open_the_door.tscn"
+	get_tree().change_scene(game_menu)
 

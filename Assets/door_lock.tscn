@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Images/book_ico.png" type="Texture" id=1]
+[ext_resource path="res://Images/key_door.png" type="Texture" id=1]
 [ext_resource path="res://Assets/door_lock.gd" type="Script" id=2]
 
 [node name="door_lock" type="Node2D"]
@@ -8,16 +8,16 @@ script = ExtResource( 2 )
 
 [node name="door_lock" type="Button" parent="."]
 light_mask = 3
-margin_left = 41.0
-margin_top = 42.0
-margin_right = 61.0
-margin_bottom = 54.0
+margin_left = 67.0
+margin_top = 28.0
+margin_right = 88.0
+margin_bottom = 51.0
+shortcut_in_tooltip = false
+icon = ExtResource( 1 )
+flat = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="s_door_lock" type="Sprite" parent="door_lock"]
-position = Vector2( 10, 6 )
-scale = Vector2( 0.0255591, 0.0321337 )
-texture = ExtResource( 1 )
+[connection signal="pressed" from="door_lock" to="." method="_on_door_lock_pressed"]
