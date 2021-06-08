@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Minigames/Barman/Barman.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Barman/Images/BarBottles.png" type="Texture" id=2]
 [ext_resource path="res://Minigames/Barman/Images/BrickWall.png" type="Texture" id=3]
 [ext_resource path="res://Minigames/Barman/Images/BarCounter.png" type="Texture" id=4]
 [ext_resource path="res://Minigames/Barman/Images/BarmanSheet.png" type="Texture" id=5]
+[ext_resource path="res://Minigames/Poster_Maker/Images/Clock.png" type="Texture" id=6]
+[ext_resource path="res://Minigames/Poster_Maker/Images/Objective.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/PixelRPG.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Bartender"
@@ -23,8 +26,54 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="Theme" id=4]
+
+[sub_resource type="Animation" id=2]
+resource_name = "ClockAnim"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 8 )
+
 [node name="Barman" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 7.76181, 76.5041 )
+texture = ExtResource( 3 )
+
+[node name="BarBottles" type="Sprite" parent="Background"]
+position = Vector2( 37.2382, -26.5041 )
+texture = ExtResource( 2 )
+
+[node name="BarmanSheet" type="Sprite" parent="Background"]
+position = Vector2( 34.6989, 7.22141 )
+scale = Vector2( 1.59094, 1.59094 )
+texture = ExtResource( 5 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/BarmanSheet"]
+autoplay = "Bartender"
+method_call_mode = 1
+anims/Bartender = SubResource( 1 )
+
+[node name="Counter" type="Sprite" parent="Background"]
+position = Vector2( 37.4725, 28.7302 )
+texture = ExtResource( 4 )
 
 [node name="Game" type="Control" parent="."]
 margin_left = 0.374573
@@ -35,29 +84,6 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Background" type="Sprite" parent="Game"]
-position = Vector2( 7.38724, 76.1295 )
-texture = ExtResource( 3 )
-
-[node name="BarBottles" type="Sprite" parent="Game/Background"]
-position = Vector2( 37.2382, -26.5041 )
-texture = ExtResource( 2 )
-
-[node name="BarmanSheet" type="Sprite" parent="Game/Background"]
-position = Vector2( 34.6989, 7.22141 )
-scale = Vector2( 1.59094, 1.59094 )
-texture = ExtResource( 5 )
-hframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Game/Background/BarmanSheet"]
-autoplay = "Bartender"
-method_call_mode = 1
-anims/Bartender = SubResource( 1 )
-
-[node name="Counter" type="Sprite" parent="Game/Background"]
-position = Vector2( 37.6128, 28.8705 )
-texture = ExtResource( 4 )
 
 [node name="Points" type="RichTextLabel" parent="Game"]
 margin_right = 90.0
@@ -85,34 +111,33 @@ __meta__ = {
 }
 
 [node name="OptionA" type="Button" parent="Game"]
-margin_left = 5.22451
-margin_top = 105.416
-margin_right = 29.2245
-margin_bottom = 131.416
+margin_left = 2.5
+margin_top = 105.0
+margin_right = 27.5
+margin_bottom = 130.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OptionB" type="Button" parent="Game"]
-margin_left = 34.0127
+margin_left = 32.5
 margin_top = 105.416
-margin_right = 58.0127
-margin_bottom = 131.416
+margin_right = 57.5
+margin_bottom = 130.416
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OptionC" type="Button" parent="Game"]
-margin_left = 61.385
-margin_top = 105.416
-margin_right = 85.385
-margin_bottom = 131.416
+margin_left = 62.5
+margin_top = 104.97
+margin_right = 87.5
+margin_bottom = 129.97
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="Game"]
-self_modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 margin_left = 3.0
 margin_top = 27.0
 margin_right = 29.0
@@ -125,7 +150,58 @@ __meta__ = {
 position = Vector2( 13, 13 )
 scale = Vector2( 0.75, 0.75 )
 
+[node name="Prompt_Screen" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 25.0
+margin_right = 90.0
+margin_bottom = 63.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Objective" type="Sprite" parent="Prompt_Screen"]
+position = Vector2( 46.6141, 29.5838 )
+rotation = -1.34914
+scale = Vector2( 0.146127, 0.146127 )
+texture = ExtResource( 7 )
+
+[node name="Prompt" type="Label" parent="Prompt_Screen"]
+margin_right = 90.0
+margin_bottom = 16.0
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ache X palavras"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Clock" type="Sprite" parent="Prompt_Screen"]
+position = Vector2( 45, 80 )
+texture = ExtResource( 6 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prompt_Screen/Clock"]
+autoplay = "ClockAnim"
+anims/ClockAnim = SubResource( 2 )
+
+[node name="Start_Timer" type="Timer" parent="Prompt_Screen"]
+autostart = true
+
+[node name="Start_Count_Down" type="Label" parent="Prompt_Screen"]
+visible = false
+margin_top = 46.0
+margin_right = 90.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4"
+align = 1
+autowrap = true
+
 [connection signal="pressed" from="Game/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Game/OptionA" to="." method="_on_OptionA_pressed"]
 [connection signal="pressed" from="Game/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="pressed" from="Game/OptionC" to="." method="_on_OptionC_pressed"]
+[connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]

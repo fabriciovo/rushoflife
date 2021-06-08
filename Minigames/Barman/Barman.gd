@@ -6,10 +6,7 @@ signal GAMEOVER
 
 const GameController = preload("res://Assets/GameController.tres")
 
-#var timer = GameController._MiniGame.MiniGameTimer
-#var difficult = GameController._MiniGame.Dificult
 var timer = GameController._MiniGame.MiniGameTimer / GameController._MiniGame.Dificult
-var difficult = 3
 var points = 0
 var minigame_end = "res://Scenes/PartyTransition.tscn"
 
@@ -30,25 +27,32 @@ enum {BEER, VODKA, TEQUILA, WINE, RUM, ABSINT}
 
 var drinks: Array
 
+var start_Timer_CountDown = 4
+var GameStart = false
+
 func _ready():
-	optA[0].rect_scale *= 0.6
-	optB[0].rect_scale *= 0.6
-	optC[0].rect_scale *= 0.6
+	$Game.visible = false
+	$Prompt_Screen/Prompt.text = "Serve the\ndrinks\ncorrectly"
+	optA[0].expand_icon = true
+	optB[0].expand_icon = true
+	optC[0].expand_icon = true
 	load_Drinks()
 	button.visible = false
 
 func _process(delta):
-	points_text.text = str(points)
-	timer_text.text = str(timer)
-	timer -= delta
-	
-	if timer > 0:
-		game_loop(delta)
-	else:
-		disable()
-		points_text.text = "Record: " + str(points)
-		timer_text.text = "GAME OVER"
-		button.visible = true
+	if GameStart:
+		points_text.text = str(points)
+		timer_text.text = str(timer)
+		timer -= delta
+		
+		if timer > 0:
+			game_loop(delta)
+		else:
+			disable()
+			points_text.text = "Record: " + str(points)
+			GameController.Score += points
+			timer_text.text = "GAME OVER"
+			button.visible = true
 
 func game_loop(l_delta):
 	if sorted == false:
@@ -137,3 +141,13 @@ func disable():
 	optB[0].disabled = true
 	optC[0].disabled = true
 	
+
+
+func _on_Start_Timer_timeout():
+	start_Timer_CountDown -= 1
+	$Prompt_Screen/Start_Count_Down.text = str(start_Timer_CountDown)
+	
+	if start_Timer_CountDown <= 0:
+		GameStart = true
+		$Game.visible = true
+		$Prompt_Screen.visible = false
