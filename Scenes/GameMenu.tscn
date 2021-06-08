@@ -26,7 +26,7 @@ texture = ExtResource( 3 )
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 88.0
-margin_bottom = 28.0
+margin_bottom = 34.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,9 +59,9 @@ __meta__ = {
 
 [node name="Options" type="Button" parent="Screen"]
 margin_left = 73.6827
-margin_top = 31.183
+margin_top = 36.1383
 margin_right = 981.683
-margin_bottom = 939.183
+margin_bottom = 944.138
 rect_scale = Vector2( 0.015, 0.015 )
 icon = ExtResource( 2 )
 flat = true
@@ -71,9 +71,9 @@ __meta__ = {
 
 [node name="Album" type="Button" parent="Screen"]
 margin_left = 1.96978
-margin_top = 30.7175
+margin_top = 35.6728
 margin_right = 631.97
-margin_bottom = 423.717
+margin_bottom = 428.673
 rect_scale = Vector2( 0.03, 0.036 )
 icon = ExtResource( 4 )
 flat = true
