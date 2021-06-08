@@ -1,5 +1,7 @@
 extends Control
 
+const GameController = preload("res://Assets/GameController.tres")
+
 var minigame_end = "res://Scenes/PartyTransition.tscn"
 
 var selected_Letters = []
@@ -119,4 +121,17 @@ func _on_Try_Again_BTN_pressed():
 	get_tree().change_scene(minigame_end)
 	
 func Next_Scene():
+	var img = get_viewport().get_texture().get_data()
+	yield(get_tree(), "idle_frame")
+	var tex = ImageTexture.new()
+	tex.create_from_image(img)
+
+	if GameController.Level == 1:
+		GameController.TransitionImage0 = tex
+	elif GameController.Level == 2:
+		GameController.TransitionImage1 = tex
+	elif GameController.Level == 3:
+		GameController.TransitionImage2 = tex
+
+#	GameController.Score += points		
 	get_tree().change_scene(minigame_end)

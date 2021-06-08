@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/PartyTransition.gd" type="Script" id=1]
 [ext_resource path="res://Images/transition.jpg" type="Texture" id=2]
 [ext_resource path="res://qmark.png" type="Texture" id=3]
-[ext_resource path="res://button_pressed.png" type="Texture" id=4]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,25 +19,49 @@ position = Vector2( 42.8809, 79.3749 )
 scale = Vector2( 0.141352, 0.623616 )
 texture = ExtResource( 2 )
 
-[node name="border" type="Sprite" parent="Control"]
-position = Vector2( 25, 46.5 )
-scale = Vector2( 0.46875, 0.421875 )
-texture = ExtResource( 4 )
+[node name="PanelA" type="Panel" parent="Control"]
+margin_left = 10.6787
+margin_top = 24.6945
+margin_right = 40.6787
+margin_bottom = 54.6945
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Phase1" type="Sprite" parent="Control/border"]
+[node name="Phase" type="Sprite" parent="Control/PanelA"]
 use_parent_material = true
-position = Vector2( 0.136745, -0.611549 )
-scale = Vector2( 0.0676478, 0.0484141 )
+position = Vector2( 15.1114, 14.8885 )
+scale = Vector2( 0.03, 0.0219184 )
 texture = ExtResource( 3 )
 
-[node name="Phase2" type="Sprite" parent="Control"]
-position = Vector2( 68.1977, 73.4656 )
-scale = Vector2( 0.0317099, 0.0204247 )
+[node name="PanelB" type="Panel" parent="Control"]
+margin_left = 54.2976
+margin_top = 54.237
+margin_right = 84.2976
+margin_bottom = 84.237
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Phase" type="Sprite" parent="Control/PanelB"]
+use_parent_material = true
+position = Vector2( 15.1114, 14.8885 )
+scale = Vector2( 0.03, 0.0219184 )
 texture = ExtResource( 3 )
 
-[node name="Phase3" type="Sprite" parent="Control"]
-position = Vector2( 24.7106, 102.457 )
-scale = Vector2( 0.0317099, 0.0204247 )
+[node name="PanelC" type="Panel" parent="Control"]
+margin_left = 10.2063
+margin_top = 84.8558
+margin_right = 40.2063
+margin_bottom = 114.856
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Phase" type="Sprite" parent="Control/PanelC"]
+use_parent_material = true
+position = Vector2( 15.1114, 14.8885 )
+scale = Vector2( 0.03, 0.0219184 )
 texture = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="Control"]

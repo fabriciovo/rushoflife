@@ -114,8 +114,7 @@ func sort_Answer(answer, wrongA, wrongB):
 		optC[1] = answer
 
 func _on_Button_pressed():
-	GameController.Score += points
-	get_tree().change_scene(minigame_end)
+	NextScene()
 
 func load_Drinks():
 	var beer = load("res://Minigames/Barman/Images/Drinks/Beer.png")
@@ -140,8 +139,6 @@ func disable():
 	optA[0].disabled = true
 	optB[0].disabled = true
 	optC[0].disabled = true
-	
-
 
 func _on_Start_Timer_timeout():
 	start_Timer_CountDown -= 1
@@ -151,3 +148,19 @@ func _on_Start_Timer_timeout():
 		GameStart = true
 		$Game.visible = true
 		$Prompt_Screen.visible = false
+
+func NextScene():
+	var img = get_viewport().get_texture().get_data()
+	yield(get_tree(), "idle_frame")
+	var tex = ImageTexture.new()
+	tex.create_from_image(img)
+
+	if GameController.Level == 1:
+		GameController.TransitionImage0 = tex
+	elif GameController.Level == 2:
+		GameController.TransitionImage1 = tex
+	elif GameController.Level == 3:
+		GameController.TransitionImage2 = tex
+
+	GameController.Score += points	
+	get_tree().change_scene(minigame_end)

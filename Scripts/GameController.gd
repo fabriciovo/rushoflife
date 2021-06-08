@@ -18,3 +18,8 @@ func set_Level(level):
 
 func set_Stage(stage):
 	Stage =  stage
+
+func EraseImages():
+	TransitionImage0 = null
+	TransitionImage1 = null
+	TransitionImage2 = null
