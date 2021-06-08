@@ -4,7 +4,7 @@ var minigame_end = "res://Scenes/PartyTransition.tscn"
 
 var selected_Letters = []
 var words_Found = []
-var start_Timer_CountDown = 3
+var start_Timer_CountDown = 4
 var difficulty = 1
 var words_Left
 var first_Word = true
@@ -16,7 +16,7 @@ func _ready():
 	selected_Letters = letters_Data_Bank[randi() % letters_Data_Bank.size()]
 	selected_Letters.Letters.shuffle()
 	words_Left = difficulty
-	$Prompt_Screen/Prompt.text = "Ache " + str(difficulty) + " palavras"
+	$Prompt_Screen/Prompt.text = "Find\n" + str(difficulty) + "\nwords"
 #	SETANDO O TEMPO QUE O JGADOR TEM PARA ACHAR AS PALAVRAS, PODE SER MUDADO TROCANDO O TEMPO NA CENA
 	game_CountDown = int($Game_Container/HBoxContainer2/Game_Countdown.text)
 
