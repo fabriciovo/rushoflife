@@ -9,10 +9,10 @@ var velocity = Vector2.ZERO
 var minigame_end = "res://Scenes/PartyTransition.tscn"
 var acc = 0
 var start = false
+var end_pong = false
 
 func _ready():
 	set_physics_process(false)
-
 
 func _physics_process(delta):
 	velocity.y += 30 * delta
@@ -21,7 +21,10 @@ func _physics_process(delta):
 		_on_impact(collision.normal)
 
 func _on_impact(normal : Vector2):
-	NextScene()
+	velocity = velocity.bounce(normal)
+	velocity *= 0.5 + rand_range(-1, 1)
+	
+	#NextScene()
 
 func launch():
 	var temp = global_transform
@@ -35,6 +38,11 @@ func launch():
 func acceleration():
 	start = true
 	print(acc)
+	
+func checkVelocity():
+	if velocity.x == 0 && end_pong:
+		NextScene()
+
 
 func NextScene():
 	get_tree().change_scene(minigame_end)
@@ -42,10 +50,7 @@ func NextScene():
 
 func _on_Pong_timeout():
 	if start: 
-		acc += 10
+		acc += 1
 		if acc >= 100 : 
 			acc = 0
 
-
-func _on_VisibilityNotifier2D_screen_exited():
-	print("foofsoijdsaoidjoiaj")

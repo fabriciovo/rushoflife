@@ -1,14 +1,15 @@
 extends Node2D
-
+var minigame_end = "res://Scenes/PartyTransition.tscn"
 var door_lock = preload("res://Assets/door_lock.tscn").instance()                                                                       
-onready var txt_start = $p_text/txt_start                                                                       
-onready var txt_instructions = $p_text/txt_start                                                                       
+onready var prompt = $Prompt_Screen
+onready var txt_end = $Timer
 
 
 var screen_size_x = -20
-var screen_size_y = 120
+var screen_size_y = 60
 var timer = 3
 var t_start = 3
+var t_end = 5
 var start = false
 
 
@@ -44,12 +45,19 @@ func _on_t_door_lock_timeout():
 				timer = 30
 		
 
-
-func _on_t_start_timeout():
-	
+func _on_Start_Timer_timeout():
 	t_start -= 1
-	txt_start.text = String(t_start)
 	if t_start < 0:
 		start = true
-		txt_start.hide()
-		txt_instructions.hide()
+		prompt.hide()
+
+
+func _on_t_count_to_lose_timeout():
+	if start:
+		t_end -= 1
+		txt_end.text = str(t_end)
+		if t_end==0:
+			next_scene()
+
+func next_scene(): 
+	get_tree().change_scene(minigame_end)
