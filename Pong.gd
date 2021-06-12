@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 
 
-
 const TRHOW_VELOCITY = Vector2(800, -400)
 
 var velocity = Vector2.ZERO
@@ -10,6 +9,7 @@ var minigame_end = "res://Scenes/PartyTransition.tscn"
 var acc = 0
 var start = false
 var end_pong = false
+var velocity_zero = false
 
 func _ready():
 	set_physics_process(false)
@@ -41,7 +41,7 @@ func acceleration():
 	
 func checkVelocity():
 	if velocity.x == 0 && end_pong:
-		NextScene()
+		velocity_zero = true
 
 
 func NextScene():
