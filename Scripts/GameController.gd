@@ -8,6 +8,9 @@ const _Player = preload("res://Assets/Player.tres")
 export var Level = 0 setget set_Level
 export var Stage = 0 setget set_Stage
 export var Score = 0
+export var Life = 5 setget set_Life
+export var Sanity = 5 setget set_Sanity
+export var Money = 100 setget set_Money
 
 var TransitionImage0: Texture
 var TransitionImage1: Texture
@@ -17,7 +20,16 @@ func set_Level(level):
 	Level =  level
 
 func set_Stage(stage):
-	Stage =  stage
+	Stage = stage
+	
+func set_Sanity(sanity):
+	Sanity = sanity
+	
+func set_Life(life):
+	Life =  life
+	
+func set_Money(money):
+	Money = money
 
 func EraseImages():
 	TransitionImage0 = null

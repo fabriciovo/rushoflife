@@ -22,46 +22,93 @@ position = Vector2( 45, 80 )
 scale = Vector2( 0.146, 0.16 )
 texture = ExtResource( 3 )
 
-[node name="ScoreBoard" type="RichTextLabel" parent="Screen"]
+[node name="score_board" type="RichTextLabel" parent="Screen"]
+margin_right = 90.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Screen/score_board"]
+margin_right = 84.0
+margin_bottom = 16.0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="Screen/score_board"]
 margin_left = 1.0
-margin_top = 1.0
-margin_right = 88.0
-margin_bottom = 34.0
+margin_top = 15.0
+margin_right = 56.0
+margin_bottom = 31.0
+text = "Score:"
+
+[node name="life" type="Label" parent="Screen/score_board"]
+margin_left = 1.0
+margin_top = 31.0
+margin_right = 39.0
+margin_bottom = 47.0
+rect_pivot_offset = Vector2( 45.7773, -0.471939 )
+text = "Life:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sanity" type="Label" parent="Screen/score_board"]
+margin_left = 36.0
+margin_top = 31.0
+margin_right = 87.0
+margin_bottom = 47.0
+text = "Sanity: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="money" type="Label" parent="Screen/score_board"]
+margin_left = 54.0
+margin_top = 15.0
+margin_right = 90.0
+margin_bottom = 31.0
+text = "$: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="Screen"]
-margin_left = 4.86209
-margin_top = 110.192
-margin_right = 83.8621
-margin_bottom = 141.192
+margin_left = 5.0
+margin_top = 112.0
+margin_right = 84.0
+margin_bottom = 159.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GamePanel" type="PanelContainer" parent="Screen/Panel"]
-margin_right = 81.0
-margin_bottom = 30.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StartMiniGame" type="Button" parent="Screen/Panel/GamePanel"]
+[node name="go_to_shop" type="Button" parent="Screen/Panel"]
 margin_left = 6.0
-margin_top = 4.0
+margin_top = 27.5281
 margin_right = 75.0
-margin_bottom = 26.0
+margin_bottom = 42.5281
+text = "Shop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartMiniGame2" type="Button" parent="Screen/Panel"]
+margin_left = 6.0
+margin_top = 4.52806
+margin_right = 75.0
+margin_bottom = 20.5281
 text = "Start Party"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Options" type="Button" parent="Screen"]
-margin_left = 73.6827
-margin_top = 36.1383
-margin_right = 981.683
-margin_bottom = 944.138
+margin_left = 75.7773
+margin_top = 48.0
+margin_right = 983.778
+margin_bottom = 956.0
 rect_scale = Vector2( 0.015, 0.015 )
 icon = ExtResource( 2 )
 flat = true
@@ -70,10 +117,10 @@ __meta__ = {
 }
 
 [node name="Album" type="Button" parent="Screen"]
-margin_left = 1.96978
-margin_top = 35.6728
-margin_right = 631.97
-margin_bottom = 428.673
+margin_left = 1.0
+margin_top = 48.0
+margin_right = 631.0
+margin_bottom = 441.0
 rect_scale = Vector2( 0.03, 0.036 )
 icon = ExtResource( 4 )
 flat = true
@@ -91,4 +138,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Screen/Panel/GamePanel/StartMiniGame" to="." method="_on_StartMiniGame_pressed"]
+[connection signal="pressed" from="Screen/Panel/go_to_shop" to="." method="_on_go_to_shop_pressed"]
+[connection signal="pressed" from="Screen/Panel/StartMiniGame2" to="." method="_on_StartMiniGame_pressed"]
