@@ -8,7 +8,7 @@ const GameController = preload("res://Assets/GameController.tres")
 
 var timer = GameController._MiniGame.MiniGameTimer / GameController._MiniGame.Dificult
 var points = 0
-var minigame_end = "res://Scenes/PartyTransition.tscn"
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 onready var points_text = $Game/Points
 onready var timer_text = $Game/Timer
@@ -52,7 +52,7 @@ func _process(delta):
 			points_text.text = "Record: " + str(points)
 			GameController.Score += points
 			timer_text.text = "GAME OVER"
-			button.visible = true
+			_win()
 
 func game_loop(l_delta):
 	if sorted == false:
@@ -63,21 +63,21 @@ func _on_OptionA_pressed():
 	if optA[1] == answer:
 		points += 1
 	else:
-		points -= 1
+		_lose()
 	sorted = false
 
 func _on_OptionB_pressed():
 	if optB[1] == answer:
 		points += 1
 	else:
-		points -= 1
+		_lose()
 	sorted = false
 
 func _on_OptionC_pressed():
 	if optC[1] == answer:
 		points += 1
 	else:
-		points -= 1
+		_lose()
 	sorted = false
 
 func sort_Value():
@@ -161,6 +161,14 @@ func NextScene():
 		GameController.TransitionImage1 = tex
 	elif GameController.Level == 3:
 		GameController.TransitionImage2 = tex
-
 	GameController.Score += points	
 	get_tree().change_scene(minigame_end)
+	
+	
+func _win():
+	Global.win = true
+	NextScene()
+func _lose():
+	Global.win = false
+	NextScene()
+

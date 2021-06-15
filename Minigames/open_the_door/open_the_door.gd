@@ -1,10 +1,10 @@
 extends Node2D
-var minigame_end = "res://Scenes/PartyTransition.tscn"
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 var door_lock = preload("res://Assets/door_lock.tscn").instance()                                                                       
 onready var prompt = $Prompt_Screen
 onready var timer = $Timer
 onready var points = $Points
-onready var b_next_minigame = $NextMinigame
+
 onready var t_count_to_lose = $Prompt_Screen/t_count_to_lose
 var screen_size_x = -20
 var screen_size_y = 60
@@ -12,7 +12,7 @@ var t_timer = 3
 var t_start = 3
 var t_end = 5
 var start = false
-
+var win = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,8 +28,9 @@ func _ready():
 
 func _process(delta):
 	if door_lock.click:
-		b_next_minigame.show()
+		Global.win = true
 		t_count_to_lose.stop()
+		next_scene()
 		
 
 func _on_door_lock_pressed():
@@ -55,7 +56,7 @@ func _on_t_door_lock_timeout():
 
 func _on_Start_Timer_timeout():
 	t_start -= 1
-	if t_start < 0:
+	if t_start == 0:
 		start = true
 		prompt.hide()
 
@@ -65,12 +66,18 @@ func _on_t_count_to_lose_timeout():
 		t_end -= 1
 		timer.text = str(t_end)
 		if t_end==0:
-			b_next_minigame.show()
+			start = false
+			Global.win = false
+			door_lock.hide()
+			t_count_to_lose.stop()
+			next_scene()
 
 
 func next_scene(): 
 	get_tree().change_scene(minigame_end)
 
 
-func _on_NextMinigame_pressed():
-	next_scene()
+
+	
+
+

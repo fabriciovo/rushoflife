@@ -22,7 +22,7 @@ func _physics_process(delta):
 
 func _on_impact(normal : Vector2):
 	velocity = velocity.bounce(normal)
-	velocity *= 0.5 + rand_range(-1, 1)
+	velocity *= 0.5 + rand_range(-0.5,0.5)
 	
 	#NextScene()
 

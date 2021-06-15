@@ -23,7 +23,7 @@ var rng = RandomNumberGenerator.new()
 var direction = 0
 
 onready var button = $Game/Button
-onready var bg2 = $Game/BG2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,7 +63,6 @@ func game_loop(l_delta):
 #
 #	var l_scale = (pole_distance / 5)
 #	pole.scale = Vector2(1 * l_scale, 1 * l_scale)
-	AnimateBG(l_delta)
 	pole.position.x -= pole_speedx * l_delta * difficult
 	if pole.position.x < 40 and pole.position.x > 20:
 		pole_collider.disabled = false
@@ -77,11 +76,7 @@ func game_loop(l_delta):
 func _on_Button_pressed():
 	Next_Scene()
 	
-func AnimateBG(l_delta):
-	bg2.position.x -= pole_speedx * l_delta * difficult
-	if bg2.position.x < -110:
-		bg2.position.x = 300
-		
+
 	
 func Next_Scene():
 

@@ -41,6 +41,7 @@ func Game_Loop():
 	if(GameController.Stage == 4):
 		Reset()
 		Game_Menu()
+
 	
 
 func Poster_Maker():

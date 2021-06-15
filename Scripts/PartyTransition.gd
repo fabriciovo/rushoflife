@@ -11,7 +11,7 @@ func _ready():
 	prepare_Phase(phase2, 1, GameController.Level, GameController.TransitionImage1)
 	prepare_Phase(phase3, 2, GameController.Level, GameController.TransitionImage2)
 	
-	if GameController.Level == 3:
+	if GameController.Stage == 4:
 		GameController.EraseImages()
 		get_node("Control/Button").text = "Finish"
 

@@ -114,18 +114,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextMinigame" type="Button" parent="."]
-visible = false
-margin_top = 71.0
-margin_right = 90.0
-margin_bottom = 83.0
-text = "Continue"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
 [connection signal="timeout" from="t_door_lock" to="." method="_on_t_door_lock_timeout"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
 [connection signal="timeout" from="Prompt_Screen/t_count_to_lose" to="." method="_on_t_count_to_lose_timeout"]
-[connection signal="pressed" from="NextMinigame" to="." method="_on_NextMinigame_pressed"]

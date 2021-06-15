@@ -51,6 +51,7 @@ __meta__ = {
 
 [node name="Ground" type="TextureRect" parent="Game"]
 material = SubResource( 2 )
+mouse_filter = 2
 texture = ExtResource( 6 )
 stretch_mode = 2
 script = ExtResource( 5 )
