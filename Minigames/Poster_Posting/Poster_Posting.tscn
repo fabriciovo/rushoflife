@@ -1,12 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Minigames/Poster_Posting/Poster_Posting.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Poster_Posting/Pole.tscn" type="PackedScene" id=2]
-[ext_resource path="res://pixel-art-street-99878701.jpg" type="Texture" id=3]
 [ext_resource path="res://Images/CharacterSheet.png" type="Texture" id=4]
+[ext_resource path="res://Minigames/Poster_Posting/Ground.gd" type="Script" id=5]
+[ext_resource path="res://Minigames/Poster_Posting/Images/RushOfLifePosterPostingGround.png" type="Texture" id=6]
 
-[sub_resource type="Animation" id=1]
-resource_name = "CharacterWalk"
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed;
+
+void fragment(){
+	vec2 shifteduv = UV;
+	shifteduv.x += TIME * scroll_speed;
+	vec4 col = texture(TEXTURE, shifteduv);
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/scroll_speed = null
+
+[sub_resource type="Animation" id=3]
 length = 2.4
 loop = true
 tracks/0/type = "value"
@@ -33,15 +49,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG1" type="Sprite" parent="Game"]
-position = Vector2( 100.552, 80.854 )
-scale = Vector2( 0.162758, 0.162758 )
-texture = ExtResource( 3 )
-
-[node name="BG2" type="Sprite" parent="Game"]
-position = Vector2( 311.217, 80.854 )
-scale = Vector2( 0.162758, 0.162758 )
-texture = ExtResource( 3 )
+[node name="Ground" type="TextureRect" parent="Game"]
+material = SubResource( 2 )
+texture = ExtResource( 6 )
+stretch_mode = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Pole" parent="Game" instance=ExtResource( 2 )]
 position = Vector2( 90.3746, 63.5186 )
@@ -50,10 +65,10 @@ position = Vector2( 90.3746, 63.5186 )
 root_node = NodePath("CharacterSheet")
 autoplay = "CharacterWalk"
 playback_speed = 5.0
-anims/CharacterWalk = SubResource( 1 )
+anims/CharacterWalk = SubResource( 3 )
 
 [node name="CharacterSheet" type="Sprite" parent="Game/AnimationPlayer"]
-position = Vector2( 14.6786, 97.6212 )
+position = Vector2( 14.6786, 90.1887 )
 texture = ExtResource( 4 )
 hframes = 4
 frame = 3

@@ -159,7 +159,6 @@ autowrap = true
 position = Vector2( 45, 80 )
 texture = ExtResource( 6 )
 hframes = 4
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Prompt_Screen/Clock"]
 autoplay = "ClockAnim"

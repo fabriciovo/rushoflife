@@ -23,8 +23,6 @@ var rng = RandomNumberGenerator.new()
 var direction = 0
 
 onready var button = $Game/Button
-
-onready var bg1 = $Game/BG1
 onready var bg2 = $Game/BG2
 
 # Called when the node enters the scene tree for the first time.
@@ -80,22 +78,24 @@ func _on_Button_pressed():
 	Next_Scene()
 	
 func AnimateBG(l_delta):
-	bg1.position.x -= pole_speedx * l_delta * difficult
 	bg2.position.x -= pole_speedx * l_delta * difficult
-	if bg1.position.x < -110:
-		bg1.position.x = 300
 	if bg2.position.x < -110:
 		bg2.position.x = 300
 		
 	
 func Next_Scene():
+
 	var img = get_viewport().get_texture().get_data()
 	yield(get_tree(), "idle_frame")
-#	yield(get_tree(), "idle_frame")
 	var tex = ImageTexture.new()
 	tex.create_from_image(img)
 
-	GameController.TransitionImage0 = tex
+	if GameController.Level == 1:
+		GameController.TransitionImage0 = tex
+	elif GameController.Level == 2:
+		GameController.TransitionImage1 = tex
+	elif GameController.Level == 3:
+		GameController.TransitionImage2 = tex
 
 	GameController.Score += points	
 	get_tree().change_scene(minigame_end)
