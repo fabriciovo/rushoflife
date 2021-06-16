@@ -5,21 +5,23 @@ onready var prompt = $Prompt_Screen
 onready var timer = $Timer
 onready var points = $Points
 
-onready var t_count_to_lose = $Prompt_Screen/t_count_to_lose
-var screen_size_x = -20
-var screen_size_y = 60
+var screen_size_x = 0
+var screen_size_y = 80
 var t_timer = 3
 var t_start = 3
 var t_end = 5
 var start = false
 var win = false
 
+var rnd_x = 0.0
+var rnd_y = 0.0
+	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	randomize()
-	var rnd_x = rand_range(0,screen_size_x)
-	var rnd_y = rand_range(0,screen_size_y)
+	var rnd_x = rand_range(screen_size_x-60,screen_size_x)
+	var rnd_y = rand_range(screen_size_y-80,screen_size_y)
 	print(rnd_x)
 	print(rnd_y)
 	door_lock.position = Vector2(rnd_x,rnd_y)
@@ -27,11 +29,16 @@ func _ready():
 	door_lock.hide()
 
 func _process(delta):
+	if start:
+		t_end -= delta
+		timer.text = str(t_end)
+
 	if door_lock.click:
 		Global.win = true
-		t_count_to_lose.stop()
 		next_scene()
-		
+	if t_end <= 0:
+		Global.win = false
+		next_scene()
 
 func _on_door_lock_pressed():
 	pass # Replace with function body.
@@ -40,18 +47,22 @@ func _on_door_lock_pressed():
 func _on_t_door_lock_timeout():
 	if start:
 		door_lock.show()
-		points.show()
-		timer.show()
 		t_timer -= 1
+		if door_lock.position.x > screen_size_x || door_lock.position.x < screen_size_x-60:
+			rnd_x = -rnd_x
+		if door_lock.position.y > screen_size_y || door_lock.position.y < screen_size_y-80:
+			rnd_y = -rnd_y
+		door_lock.translate( Vector2(rnd_x, rnd_y) )
+			
 		if !door_lock.click:
 			if(t_timer <= 0):
-					randomize()
-					var rnd_x = rand_range(0,screen_size_x)
-					var rnd_y = rand_range(0,screen_size_y)
-					print(rnd_x)
-					print(rnd_y)
-					door_lock.position = Vector2(rnd_x,rnd_y)
-					t_timer = 30
+				var rng = RandomNumberGenerator.new()
+				rng.randomize()
+				rnd_x = rng.randf_range(-2, 2)
+				rnd_y = rng.randf_range(-2, 2)
+				print(door_lock.position.x)
+				print(door_lock.position.y)
+				t_timer = 30
 		
 
 func _on_Start_Timer_timeout():
@@ -60,24 +71,5 @@ func _on_Start_Timer_timeout():
 		start = true
 		prompt.hide()
 
-
-func _on_t_count_to_lose_timeout():
-	if start:
-		t_end -= 1
-		timer.text = str(t_end)
-		if t_end==0:
-			start = false
-			Global.win = false
-			door_lock.hide()
-			t_count_to_lose.stop()
-			next_scene()
-
-
 func next_scene(): 
 	get_tree().change_scene(minigame_end)
-
-
-
-	
-
-
