@@ -61,7 +61,7 @@ scale = Vector2( 0.146127, 0.146127 )
 texture = ExtResource( 5 )
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
-margin_right = 90.0
+margin_right = 89.0
 margin_bottom = 38.0
 theme = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -98,6 +98,7 @@ autowrap = true
 [node name="Points" type="RichTextLabel" parent="."]
 margin_right = 90.0
 margin_bottom = 24.0
+text = "FOCUS!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,6 +108,16 @@ margin_top = 136.0
 margin_right = 90.0
 margin_bottom = 160.0
 text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Timer"]
+margin_left = 2.5
+margin_top = 1.52043
+margin_right = 87.5
+margin_bottom = 21.5204
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

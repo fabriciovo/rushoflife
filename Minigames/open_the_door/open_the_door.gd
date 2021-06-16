@@ -17,8 +17,11 @@ var rnd_x = 0.0
 var rnd_y = 0.0
 var hole_speed = 2 * GameController._MiniGame.Dificult
 
+onready var progBar = $Timer/ProgressBar
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	timer.text = ''
 	randomize()
 	var rnd_x = rand_range(screen_size_x-40,screen_size_x)
 	var rnd_y = rand_range(screen_size_y-40,screen_size_y)
@@ -31,7 +34,9 @@ func _ready():
 func _process(delta):
 	if start:
 		t_end -= delta
-		timer.text = str(t_end)
+#		timer.text = str(t_end)
+
+		progBar.value = t_end / 5 * 100
 
 	if door_lock.click:
 		Global.win = true
