@@ -26,25 +26,28 @@ onready var button = $Game/AnimationPlayer/Button
 
 var clicked = false
 
-
+var start_Timer_CountDown = 4
+var start = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Game/Steps.volume_db = -1000
 	direction = rng.randi_range(0, 1)
 	button.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	points_text.text = str(points)
-	timer_text.text = str(timer)
-	timer -= delta
-	
-	if timer > 0:
-		game_loop(delta)
-	else:
-		points_text.text = "Record: " + str(points)
-		timer_text.text = "GAME OVER"
-		button.visible = true
-		$Game/Steps.volume_db = -16
+	if start:
+		points_text.text = str(points)
+		timer_text.text = str(timer)
+		timer -= delta
+		
+		if timer > 0:
+			game_loop(delta)
+		else:
+			points_text.text = "Record: " + str(points)
+			timer_text.text = "GAME OVER"
+			button.visible = true
+			$Game/Steps.volume_db = -16
 
 func _on_Pole_CLICKED(status):
 	if status == "C":
@@ -104,3 +107,11 @@ func Next_Scene():
 
 func _on_BtnSound_finished():
 	get_tree().change_scene(minigame_end)
+
+
+func _on_Start_Timer_timeout():
+	start_Timer_CountDown -= 1
+	if start_Timer_CountDown == 0:
+		$Game/AnimationPlayer/Prompt_Screen.visible = false
+		$Game/Steps.volume_db = -16
+		start = true

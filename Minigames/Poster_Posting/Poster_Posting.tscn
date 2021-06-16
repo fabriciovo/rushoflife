@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Minigames/Poster_Posting/Poster_Posting.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Poster_Posting/Pole.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Minigames/Poster_Posting/Images/RushOfLifePosterPostingGround.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/PassosLoop.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/Clique Seleção 2.wav" type="AudioStream" id=8]
+[ext_resource path="res://Fonts/PixelRPG.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Minigames/Poster_Maker/Images/Objective.png" type="Texture" id=10]
+[ext_resource path="res://Minigames/Poster_Maker/Images/Clock.png" type="Texture" id=11]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -56,6 +59,29 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 2 ]
 }
+
+[sub_resource type="Theme" id=6]
+
+[sub_resource type="Animation" id=7]
+resource_name = "ClockAnim"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 9 )
 
 [node name="Poster_Posting" type="Node2D"]
 script = ExtResource( 1 )
@@ -118,6 +144,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Prompt_Screen" type="VBoxContainer" parent="Game/AnimationPlayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 32.0
+margin_bottom = -25.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Objective" type="Sprite" parent="Game/AnimationPlayer/Prompt_Screen"]
+position = Vector2( 46.6141, 29.5838 )
+rotation = -1.34914
+scale = Vector2( 0.146127, 0.146127 )
+texture = ExtResource( 10 )
+
+[node name="Prompt" type="Label" parent="Game/AnimationPlayer/Prompt_Screen"]
+margin_right = 89.0
+margin_bottom = 38.0
+theme = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Put the
+posters
+on poles!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Clock" type="Sprite" parent="Game/AnimationPlayer/Prompt_Screen"]
+position = Vector2( 45, 80 )
+texture = ExtResource( 11 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game/AnimationPlayer/Prompt_Screen/Clock"]
+autoplay = "ClockAnim"
+anims/ClockAnim = SubResource( 7 )
+
+[node name="Start_Timer" type="Timer" parent="Game/AnimationPlayer/Prompt_Screen"]
+autostart = true
+
+[node name="Start_Count_Down" type="Label" parent="Game/AnimationPlayer/Prompt_Screen"]
+visible = false
+margin_top = 46.0
+margin_right = 90.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4"
+align = 1
+autowrap = true
+
 [node name="Points" type="RichTextLabel" parent="Game"]
 margin_right = 90.0
 margin_bottom = 24.0
@@ -143,4 +221,5 @@ pitch_scale = 1.75
 
 [connection signal="CLICKED" from="Game/Pole" to="." method="_on_Pole_CLICKED"]
 [connection signal="pressed" from="Game/AnimationPlayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Game/AnimationPlayer/Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
 [connection signal="finished" from="Game/BtnSound" to="." method="_on_BtnSound_finished"]
