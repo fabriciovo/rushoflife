@@ -11,7 +11,7 @@ var points = 0
 var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 onready var points_text = $Game/Points
-onready var timer_text = $Game/Timer
+#onready var timer_text = $Game/Timer
 
 onready var button = $Game/Button
 
@@ -30,6 +30,8 @@ var drinks: Array
 var start_Timer_CountDown = 4
 var GameStart = false
 
+onready var progBar = $Game/Timer/ProgressBar
+
 func _ready():
 	$Game.visible = false
 	$Prompt_Screen/Prompt.text = "Serve the\ndrinks\ncorrectly"
@@ -42,8 +44,10 @@ func _ready():
 func _process(delta):
 	if GameStart:
 		points_text.text = str(points)
-		timer_text.text = str(timer)
+#		timer_text.text = str(timer)
 		timer -= delta
+		
+		progBar.value = timer / (GameController._MiniGame.MiniGameTimer / GameController._MiniGame.Dificult) * 100
 		
 		if timer > 0:
 			game_loop(delta)
@@ -51,7 +55,7 @@ func _process(delta):
 			disable()
 			points_text.text = "Record: " + str(points)
 			GameController.Score += points
-			timer_text.text = "GAME OVER"
+#			timer_text.text = "GAME OVER"
 			_win()
 
 func game_loop(l_delta):

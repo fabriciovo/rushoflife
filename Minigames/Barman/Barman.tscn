@@ -52,7 +52,7 @@ font_data = ExtResource( 8 )
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 7.76181, 76.5041 )
+position = Vector2( 7.98453, 76.5041 )
 texture = ExtResource( 3 )
 
 [node name="BarBottles" type="Sprite" parent="Background"]
@@ -97,10 +97,19 @@ __meta__ = {
 }
 
 [node name="Timer" type="RichTextLabel" parent="Game"]
-margin_left = 0.625427
 margin_top = 135.625
-margin_right = 90.6254
+margin_right = 90.0
 margin_bottom = 159.625
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Game/Timer"]
+margin_left = 2.5
+margin_top = 1.89543
+margin_right = 87.5
+margin_bottom = 21.8954
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
