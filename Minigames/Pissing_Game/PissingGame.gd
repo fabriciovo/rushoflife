@@ -6,6 +6,7 @@ onready var prompt = $Prompt_Screen
 onready var current_score = $Points/Score/Score_Current
 onready var score_timer = $Points/Score/Score_Timer
 onready var timer = $Timer
+onready var progBar = $Timer/ProgressBar
 onready var points = $Points
 onready var ui_holder = $Game_Screen/UI_Holder
 
@@ -14,8 +15,6 @@ var start_Timer_CountDown = 3
 var miniGame_Timer = 15
 var difficulty = 2
 var game_Over = false
-
-
 
 #	TIRANDO O PROMPT INICIAL E O TIMER DA TELA
 func Start_Game():
@@ -61,6 +60,7 @@ func _on_Start_Timer_timeout():
 func _on_GameTimer_timeout():
 	miniGame_Timer -= 1
 	timer.text = str(miniGame_Timer)
+	progBar.value = ( float(miniGame_Timer) / 15 ) * 100
 	if $Game_Screen/PeeingGuy.fallen == true:
 		Global.win = false
 		End_Game()

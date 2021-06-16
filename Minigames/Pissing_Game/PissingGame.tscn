@@ -157,7 +157,6 @@ __meta__ = {
 }
 
 [node name="Timer" type="RichTextLabel" parent="."]
-visible = false
 margin_top = 137.0
 margin_right = 90.0
 margin_bottom = 161.0
@@ -166,8 +165,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ProgressBar" type="ProgressBar" parent="Timer"]
+margin_left = 2.5
+margin_top = 0.520432
+margin_right = 87.5
+margin_bottom = 20.5204
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Points" type="RichTextLabel" parent="."]
-visible = false
 margin_right = 90.0
 margin_bottom = 23.0
 __meta__ = {
