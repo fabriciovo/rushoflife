@@ -22,7 +22,7 @@ var pole_speedx = 24.0
 var rng = RandomNumberGenerator.new()
 var direction = 0
 
-onready var button = $Game/Button
+onready var button = $Game/AnimationPlayer/Button
 
 
 # Called when the node enters the scene tree for the first time.

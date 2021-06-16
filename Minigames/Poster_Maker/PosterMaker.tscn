@@ -86,9 +86,9 @@ text = "25"
 align = 2
 
 [node name="Words_Created" type="Label" parent="Game_Container/HBoxContainer2"]
-margin_top = 13.0
+margin_top = 10.0
 margin_right = 63.0
-margin_bottom = 40.0
+margin_bottom = 37.0
 rect_min_size = Vector2( 0, 20 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
