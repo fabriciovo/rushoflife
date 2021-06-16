@@ -2,7 +2,7 @@ extends Control
 
 const GameController = preload("res://Assets/GameController.tres")
 
-var minigame_end = "res://Scenes/PartyTransition.tscn"
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 var selected_Letters = []
 var words_Found = []
@@ -74,21 +74,15 @@ func Update_Score(text_update):
 
 
 func Success_Screen():
-	$Game_Container.queue_free()
-	$End_Screnn_Container.show()
-	$End_Screnn_Container/End_Message.text = "Voce conseguiu! Parabens!!!"
-	$End_Screnn_Container/Final_Score.text = str(difficulty - words_Left) + " palavras de: " + str(difficulty)
+	Global.win = true
 	Next_Scene()
-	pass
+	
 
 
 func Fail_Screen():
-	$Game_Container.queue_free()
-	$End_Screnn_Container.show()
-	$End_Screnn_Container/End_Message.text = "Voce falhou!!!"
-	$End_Screnn_Container/Final_Score.text = str(difficulty - words_Left) + " palavras de: " + str(difficulty)
+	Global.win = false
 	Next_Scene()
-	pass
+	
 
 
 func _on_GameTimer_timeout():

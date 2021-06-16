@@ -15,16 +15,16 @@ func _ready():
 		GameController.Money += 2
 		if GameController.Level == 1:
 			status_panel_life.text = "Life: 0"
-			status_panel_life.text = "Sanity: 0"
-			status_panel_life.text = "Money: + 2"
+			status_panel_sanity.text = "Sanity: 0"
+			status_panel_money.text = "Money: + 2"
 		if GameController.Level == 2:
 			status_panel_life.text = "Life: 0"
-			status_panel_life.text = "Sanity: 0"
-			status_panel_life.text = "Money: + 3"
+			status_panel_sanity.text = "Sanity: 0"
+			status_panel_money.text = "Money: + 3"
 		if GameController.Level == 3:
 			status_panel_life.text = "Life: 0"
-			status_panel_life.text = "Sanity: 0"
-			status_panel_life.text = "Money: + 4"
+			status_panel_sanity.text = "Sanity: 0"
+			status_panel_money.text = "Money: + 4"
 		
 		
 	else:
@@ -33,21 +33,21 @@ func _ready():
 			GameController.Life -= 1
 			GameController.Money -= 1
 			status_panel_life.text = "Life: - 1"
-			status_panel_life.text = "Sanity: 0"
-			status_panel_life.text = "Money: - 1"
+			status_panel_sanity.text = "Sanity: 0"
+			status_panel_money.text = "Money: - 1"
 		if GameController.Level == 2:
 			GameController.Sanity -= 1
 			GameController.Money -= 2
 			status_panel_life.text = "Life: 0"
-			status_panel_life.text = "Sanity: - 1"
-			status_panel_life.text = "Money: - 2"
+			status_panel_sanity.text = "Sanity: - 1"
+			status_panel_money.text = "Money: - 2"
 		if GameController.Level == 3:
 			GameController.Life -= 1
 			GameController.Sanity -= 1
 			GameController.Money -= 3
 			status_panel_life.text = "Life: - 1"
-			status_panel_life.text = "Sanity: - 1"
-			status_panel_life.text = "Money: - 3"
+			status_panel_sanity.text = "Sanity: - 1"
+			status_panel_money.text = "Money: - 3"
 		
 
 

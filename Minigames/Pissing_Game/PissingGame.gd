@@ -1,6 +1,6 @@
 extends Node2D
 
-var minigame_end = "res://Scenes/PartyTransition.tscn"
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 onready var prompt = $Prompt_Screen
 onready var current_score = $Points/Score/Score_Current
@@ -37,7 +37,7 @@ func End_Game():
 	$Game_Screen/PeeingGuy.applied_torque = 0
 	$Game_Screen/UI_Holder.queue_free()
 	timer.text = "GAME OVER"
-	$End_Screen.show()
+	Next_Scene()
 
 func _on_Urinal_Collision_area_entered(area):
 	if !game_Over:
@@ -62,8 +62,10 @@ func _on_GameTimer_timeout():
 	miniGame_Timer -= 1
 	timer.text = str(miniGame_Timer)
 	if $Game_Screen/PeeingGuy.fallen == true:
+		Global.win = false
 		End_Game()
 	if miniGame_Timer <= 0:
+		Global.win = true
 		End_Game()
 
 	
@@ -71,6 +73,3 @@ func Next_Scene():
 	get_tree().change_scene(minigame_end)
 
 
-
-func _on_NextMinigame_pressed():
-	Next_Scene()
