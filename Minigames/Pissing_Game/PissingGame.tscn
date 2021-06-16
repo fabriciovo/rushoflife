@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Urinal.png" type="Texture" id=1]
 [ext_resource path="res://Minigames/Pissing_Game/Images/PeeingGuy.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Minigames/Pissing_Game/Images/Background.png" type="Texture" id=6]
 [ext_resource path="res://AimMarker.png" type="Texture" id=7]
 [ext_resource path="res://Arow.png" type="Texture" id=8]
+[ext_resource path="res://BathroomWall2.png" type="Texture" id=9]
 [ext_resource path="res://Minigames/Poster_Maker/Images/Clock.png" type="Texture" id=10]
 [ext_resource path="res://Minigames/Poster_Maker/Images/Objective.png" type="Texture" id=11]
 
@@ -65,8 +66,13 @@ script = ExtResource( 5 )
 
 [node name="Game_Screen" type="Node2D" parent="."]
 
-[node name="BathroomWall2" type="Sprite" parent="Game_Screen"]
-position = Vector2( 39, 78 )
+[node name="Ground" type="Sprite" parent="Game_Screen"]
+position = Vector2( 53.5892, 77.0306 )
+scale = Vector2( 0.328883, 0.341539 )
+texture = ExtResource( 9 )
+
+[node name="Wall" type="Sprite" parent="Game_Screen"]
+position = Vector2( 35.818, 17.1282 )
 scale = Vector2( 0.328883, 0.341539 )
 texture = ExtResource( 6 )
 
