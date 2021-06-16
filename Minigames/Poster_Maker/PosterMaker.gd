@@ -4,6 +4,8 @@ const GameController = preload("res://Assets/GameController.tres")
 
 var minigame_end = "res://Scenes/Minigame_end.tscn"
 
+onready var progBar = $ProgressBar
+
 var selected_Letters = []
 var words_Found = []
 var start_Timer_CountDown = 4
@@ -87,6 +89,7 @@ func Fail_Screen():
 
 func _on_GameTimer_timeout():
 	game_CountDown -= 1
+	progBar.value = ( float(game_CountDown) / 25) * 100
 	$Game_Container/HBoxContainer2/Game_Countdown.text = str(game_CountDown)
 	if game_CountDown <= 0:
 		Fail_Screen()
