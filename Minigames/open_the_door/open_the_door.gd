@@ -5,8 +5,8 @@ onready var prompt = $Prompt_Screen
 onready var timer = $Timer
 onready var points = $Points
 
-var screen_size_x = 0
-var screen_size_y = 80
+var screen_size_x = 60
+var screen_size_y = 90
 var t_timer = 3
 var t_start = 3
 var t_end = 5
@@ -15,13 +15,13 @@ var win = false
 
 var rnd_x = 0.0
 var rnd_y = 0.0
-	
+var hole_speed = 2 * GameController._MiniGame.Dificult
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	var rnd_x = rand_range(screen_size_x-60,screen_size_x)
-	var rnd_y = rand_range(screen_size_y-80,screen_size_y)
+	var rnd_x = rand_range(screen_size_x-40,screen_size_x)
+	var rnd_y = rand_range(screen_size_y-40,screen_size_y)
 	print(rnd_x)
 	print(rnd_y)
 	door_lock.position = Vector2(rnd_x,rnd_y)
@@ -48,9 +48,9 @@ func _on_t_door_lock_timeout():
 	if start:
 		door_lock.show()
 		t_timer -= 1
-		if door_lock.position.x > screen_size_x || door_lock.position.x < screen_size_x-60:
+		if door_lock.position.x > screen_size_x || door_lock.position.x < screen_size_x-40:
 			rnd_x = -rnd_x
-		if door_lock.position.y > screen_size_y || door_lock.position.y < screen_size_y-80:
+		if door_lock.position.y > screen_size_y || door_lock.position.y < screen_size_y-40:
 			rnd_y = -rnd_y
 		door_lock.translate( Vector2(rnd_x, rnd_y) )
 			
@@ -58,8 +58,8 @@ func _on_t_door_lock_timeout():
 			if(t_timer <= 0):
 				var rng = RandomNumberGenerator.new()
 				rng.randomize()
-				rnd_x = rng.randf_range(-2, 2)
-				rnd_y = rng.randf_range(-2, 2)
+				rnd_x = rng.randf_range(-hole_speed, hole_speed)
+				rnd_y = rng.randf_range(-hole_speed, hole_speed)
 				print(door_lock.position.x)
 				print(door_lock.position.y)
 				t_timer = 30
