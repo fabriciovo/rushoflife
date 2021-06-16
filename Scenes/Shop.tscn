@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Minigames/Barman/Images/BarCounter.png" type="Texture" id=1]
 [ext_resource path="res://Minigames/Barman/Images/BarBottles.png" type="Texture" id=2]
 [ext_resource path="res://Images/DoctSheet.png" type="Texture" id=3]
 [ext_resource path="res://Minigames/Pissing_Game/Images/Background.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Shop.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/Clique Seleção 1.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Bartender"
@@ -133,6 +134,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="pressed" from="Game/Button" to="." method="_on_Button_pressed"]
 [connection signal="mouse_entered" from="Game/OptionA" to="." method="_on_OptionA_mouse_entered"]
 [connection signal="pressed" from="Game/OptionA" to="." method="_on_OptionA_pressed"]
@@ -140,3 +149,4 @@ __meta__ = {
 [connection signal="pressed" from="Game/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="mouse_entered" from="Game/OptionC" to="." method="_on_OptionC_mouse_entered"]
 [connection signal="pressed" from="Game/OptionC" to="." method="_on_OptionC_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

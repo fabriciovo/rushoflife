@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Images/Title.png" type="Texture" id=2]
 [ext_resource path="res://Images/TitleBackground.png" type="Texture" id=3]
+[ext_resource path="res://Sounds/Clique Seleção 1.wav" type="AudioStream" id=4]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -54,5 +55,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Screen"]
+stream = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Screen"]
+wait_time = 0.42
+one_shot = true
+
 [connection signal="pressed" from="Screen/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="Screen/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Screen/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="timeout" from="Screen/Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Clique Ponto no Mapa.wav-6a7424e74512128168e16b070057bd55.sample"
+
+[deps]
+
+source_file="res://Sounds/Clique Ponto no Mapa.wav"
+dest_files=[ "res://.import/Clique Ponto no Mapa.wav-6a7424e74512128168e16b070057bd55.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

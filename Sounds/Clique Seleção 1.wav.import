@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Clique Seleção 1.wav-0700c101ebc04e011b6ea572caab9f1f.sample"
+
+[deps]
+
+source_file="res://Sounds/Clique Seleção 1.wav"
+dest_files=[ "res://.import/Clique Seleção 1.wav-0700c101ebc04e011b6ea572caab9f1f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

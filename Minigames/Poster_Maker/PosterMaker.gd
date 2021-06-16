@@ -13,6 +13,7 @@ var difficulty = 1
 var words_Left
 var first_Word = true
 var game_CountDown
+var keySounds = ["res://Sounds/Teclado 1.wav","res://Sounds/Teclado 2.wav","res://Sounds/Teclado 3.wav"]
 
 func _ready():
 	randomize()
@@ -60,6 +61,15 @@ func Check_Player_Input(player_Input):
 			words_Found.append(player_Input.to_lower())
 			break
 
+func _input(ev):
+	if ev is InputEventKey and ev.pressed and ev.scancode != KEY_SPACE and !ev.is_echo():
+		var index = int(round(rand_range(0,2)))
+		$Game_Container/KeysSound.stream = load(keySounds[index])
+		$Game_Container/KeysSound.play()
+	elif ev is InputEventKey and ev.pressed and ev.scancode == KEY_SPACE and !ev.is_echo():
+		$Game_Container/KeysSound.stream = load("res://Sounds/Teclado Barra de Espaço.wav")
+		$Game_Container/KeysSound.play()
+		$Game_Container/KeysSound.play()
 
 #	ATUALIZANDO AS PALAVRAS ENCONTRADAS
 func Update_Score(text_update):
@@ -128,7 +138,8 @@ func Next_Scene():
 	elif GameController.Level == 2:
 		GameController.TransitionImage1 = tex
 	elif GameController.Level == 3:
-		GameController.TransitionImage2 = tex
+			GameController.TransitionImage2 = tex
 
-#	GameController.Score += points		
+	#	GameController.Score += points
 	get_tree().change_scene(minigame_end)
+

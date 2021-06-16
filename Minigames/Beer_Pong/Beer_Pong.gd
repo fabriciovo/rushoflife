@@ -57,4 +57,8 @@ func _on_pong_timer_timeout():
 
 
 func _on_NextMinigame_pressed():
+	$AudioStreamPlayer.play()
+
+
+func _on_AudioStreamPlayer_finished():
 	Next_Scene()

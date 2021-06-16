@@ -86,9 +86,9 @@ text = "25"
 align = 2
 
 [node name="Words_Created" type="Label" parent="Game_Container/HBoxContainer2"]
-margin_top = 10.0
+margin_top = 13.0
 margin_right = 63.0
-margin_bottom = 37.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 0, 20 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -109,6 +109,9 @@ margin_bottom = 91.4108
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PlaceHolder"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game_Container"]
 margin_top = 103.27
@@ -120,26 +123,28 @@ __meta__ = {
 }
 
 [node name="LineEdit" type="LineEdit" parent="Game_Container/HBoxContainer"]
-margin_left = 13.0
-margin_right = 65.0
-margin_bottom = 12.0
+margin_left = 10.0
+margin_right = 68.0
+margin_bottom = 18.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game_Container/HBoxContainer"]
-margin_left = 69.0
-margin_right = 77.0
-margin_bottom = 12.0
+margin_left = 72.0
+margin_right = 80.0
+margin_bottom = 18.0
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Game_Container/HBoxContainer/VBoxContainer"]
-margin_top = 2.0
+margin_top = 5.0
 margin_right = 8.0
-margin_bottom = 10.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 8, 8 )
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 expand = true
 
 [node name="GameTimer" type="Timer" parent="Game_Container"]
+
+[node name="KeysSound" type="AudioStreamPlayer" parent="Game_Container"]
 
 [node name="Prompt_Screen" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -159,7 +164,7 @@ texture = ExtResource( 5 )
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
-margin_bottom = 16.0
+margin_bottom = 8.0
 theme = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Ache X palavras"
@@ -229,6 +234,7 @@ margin_bottom = 12.0
 text = "Tente Novamente"
 
 [connection signal="text_entered" from="Game_Container/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="Game_Container/HBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Game_Container/GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
 [connection signal="pressed" from="End_Screnn_Container/HBoxContainer/Try_Again_BTN" to="." method="_on_Try_Again_BTN_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Minigames/Beer_Pong/Beer_Pong.gd" type="Script" id=1]
 [ext_resource path="res://Images/Character_Standing.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Minigames/Beer_Pong/Cup.gd" type="Script" id=8]
 [ext_resource path="res://Minigames/Poster_Maker/Images/Clock.png" type="Texture" id=9]
 [ext_resource path="res://Minigames/Poster_Maker/Images/Objective.png" type="Texture" id=10]
+[ext_resource path="res://Sounds/Clique Seleção 2.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25, 4 )
@@ -164,7 +165,7 @@ texture = ExtResource( 10 )
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
-margin_bottom = 16.0
+margin_bottom = 8.0
 theme = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hit the cup"
@@ -231,9 +232,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+pitch_scale = 1.75
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="pong_timer" to="Player/Pong" method="_on_Pong_timeout"]
-[connection signal="timeout" from="pong_timer" to="." method="_on_pong_timer_timeout"]
 [connection signal="timeout" from="pong_timer" to="Timer2/pong_force" method="_on_Pong_timeout"]
+[connection signal="timeout" from="pong_timer" to="." method="_on_pong_timer_timeout"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
 [connection signal="pressed" from="NextMinigame" to="." method="_on_NextMinigame_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

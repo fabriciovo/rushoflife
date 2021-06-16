@@ -9,6 +9,8 @@ onready var status_panel_life = $Node2D/status_panel/life
 onready var status_panel_sanity = $Node2D/status_panel/sanity
 onready var status_panel_money = $Node2D/status_panel/money
 
+var clicked = false
+
 func _ready():
 	if Global.win == true:
 		icon_pane_win.show()
@@ -52,4 +54,9 @@ func _ready():
 
 
 func _on_Button_pressed():
-		get_tree().change_scene(party_transition)
+	if !clicked:
+		$AudioStreamPlayer.play()
+		clicked = true
+
+func _on_AudioStreamPlayer_finished():
+	get_tree().change_scene(party_transition)

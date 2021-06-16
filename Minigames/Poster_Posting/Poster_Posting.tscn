@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Minigames/Poster_Posting/Poster_Posting.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Poster_Posting/Pole.tscn" type="PackedScene" id=2]
@@ -6,22 +6,8 @@
 [ext_resource path="res://Images/CharacterSheet.png" type="Texture" id=4]
 [ext_resource path="res://Minigames/Poster_Posting/Ground.gd" type="Script" id=5]
 [ext_resource path="res://Minigames/Poster_Posting/Images/RushOfLifePosterPostingGround.png" type="Texture" id=6]
-
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-
-uniform float scroll_speed;
-
-void fragment(){
-	vec2 shifteduv = UV;
-	shifteduv.x += TIME * scroll_speed;
-	vec4 col = texture(TEXTURE, shifteduv);
-	COLOR = col;
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/scroll_speed = null
+[ext_resource path="res://Sounds/PassosLoop.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Clique Seleção 2.wav" type="AudioStream" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -39,7 +25,23 @@ void fragment(){
 shader = SubResource( 1 )
 shader_param/scroll_speed = null
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed;
+
+void fragment(){
+	vec2 shifteduv = UV;
+	shifteduv.x += TIME * scroll_speed;
+	vec4 col = texture(TEXTURE, shifteduv);
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/scroll_speed = null
+
+[sub_resource type="Animation" id=5]
 length = 2.4
 loop = true
 tracks/0/type = "value"
@@ -67,7 +69,7 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="Game"]
-material = SubResource( 5 )
+material = SubResource( 2 )
 margin_left = -75.0047
 margin_top = -4.36535
 margin_right = 424.995
@@ -85,7 +87,7 @@ __meta__ = {
 position = Vector2( 90.3746, 58.4675 )
 
 [node name="Ground" type="TextureRect" parent="Game"]
-material = SubResource( 2 )
+material = SubResource( 4 )
 mouse_filter = 2
 texture = ExtResource( 6 )
 stretch_mode = 2
@@ -98,7 +100,7 @@ __meta__ = {
 root_node = NodePath("CharacterSheet")
 autoplay = "CharacterWalk"
 playback_speed = 5.0
-anims/CharacterWalk = SubResource( 3 )
+anims/CharacterWalk = SubResource( 5 )
 
 [node name="CharacterSheet" type="Sprite" parent="Game/AnimationPlayer"]
 position = Vector2( 14.6786, 90.1887 )
@@ -131,5 +133,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Steps" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="BtnSound" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource( 8 )
+pitch_scale = 1.75
+
 [connection signal="CLICKED" from="Game/Pole" to="." method="_on_Pole_CLICKED"]
 [connection signal="pressed" from="Game/AnimationPlayer/Button" to="." method="_on_Button_pressed"]
+[connection signal="finished" from="Game/BtnSound" to="." method="_on_BtnSound_finished"]

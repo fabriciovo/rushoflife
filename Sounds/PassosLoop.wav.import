@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PassosLoop.wav-2b81a0c8977aae60e514795ae5383562.sample"
+
+[deps]
+
+source_file="res://Sounds/PassosLoop.wav"
+dest_files=[ "res://.import/PassosLoop.wav-2b81a0c8977aae60e514795ae5383562.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

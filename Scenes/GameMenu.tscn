@@ -138,5 +138,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Timer" parent="Screen"]
+wait_time = 0.42
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Screen"]
+
 [connection signal="pressed" from="Screen/Panel/go_to_shop" to="." method="_on_go_to_shop_pressed"]
 [connection signal="pressed" from="Screen/Panel/StartMiniGame2" to="." method="_on_StartMiniGame_pressed"]
+[connection signal="pressed" from="Screen/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Screen/Album" to="." method="_on_Album_pressed"]
+[connection signal="timeout" from="Screen/Timer" to="." method="_on_Timer_timeout"]

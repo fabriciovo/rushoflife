@@ -6,6 +6,8 @@ onready var phase1 = $Control/PanelA/Phase
 onready var phase2 = $Control/PanelB/Phase
 onready var phase3 = $Control/PanelC/Phase
 
+var clicked = false
+
 func _ready():
 	prepare_Phase(phase1, 0, GameController.Level, GameController.TransitionImage0)
 	prepare_Phase(phase2, 1, GameController.Level, GameController.TransitionImage1)
@@ -16,11 +18,13 @@ func _ready():
 		get_node("Control/Button").text = "Finish"
 
 func _on_Button_pressed():
-	GameController.Level += 1
-	print(GameController.Level)
-	print(GameController.Score)
+	if !clicked:
+		GameController.Level += 1
+		print(GameController.Level)
+		print(GameController.Score)
+		$AudioStreamPlayer.play()
+		clicked = true
 	
-	get_tree().change_scene("res://Scenes/MiniGame.tscn")
 
 func prepare_Phase(phase: Sprite, phaseNumber:int, level: int, gcImage: Texture):
 	if phaseNumber == level:
@@ -35,3 +39,6 @@ func prepare_Phase(phase: Sprite, phaseNumber:int, level: int, gcImage: Texture)
 		var size = phase.texture.get_size()
 		phase.scale = Vector2(25 / size.x, 25 / size.y * -1)
 		pass
+
+func _on_AudioStreamPlayer_finished():
+	get_tree().change_scene("res://Scenes/MiniGame.tscn")

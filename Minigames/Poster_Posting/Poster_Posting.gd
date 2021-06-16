@@ -24,6 +24,8 @@ var direction = 0
 
 onready var button = $Game/AnimationPlayer/Button
 
+var clicked = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +44,7 @@ func _process(delta):
 		points_text.text = "Record: " + str(points)
 		timer_text.text = "GAME OVER"
 		button.visible = true
+		$Game/Steps.volume_db = -16
 
 func _on_Pole_CLICKED(status):
 	if status == "C":
@@ -92,5 +95,12 @@ func Next_Scene():
 	elif GameController.Level == 3:
 		GameController.TransitionImage2 = tex
 
-	GameController.Score += points	
+	GameController.Score += points
+	
+	if !clicked:
+		clicked = true
+		$Game/BtnSound.play()
+
+
+func _on_BtnSound_finished():
 	get_tree().change_scene(minigame_end)

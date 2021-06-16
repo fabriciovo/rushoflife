@@ -193,8 +193,9 @@ __meta__ = {
 }
 
 [node name="Score_Label" type="Label" parent="Points/Score"]
-margin_right = 67.0
-margin_bottom = 16.0
+margin_top = 4.0
+margin_right = 75.0
+margin_bottom = 12.0
 size_flags_horizontal = 3
 text = "Pontos:"
 __meta__ = {
@@ -202,9 +203,10 @@ __meta__ = {
 }
 
 [node name="Score_Current" type="Label" parent="Points/Score"]
-margin_left = 62.0
+margin_left = 70.0
+margin_top = 4.0
 margin_right = 74.0
-margin_bottom = 16.0
+margin_bottom = 12.0
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -232,7 +234,7 @@ texture = ExtResource( 11 )
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
-margin_bottom = 38.0
+margin_bottom = 30.0
 theme = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "piss in the
@@ -266,9 +268,9 @@ align = 1
 autowrap = true
 
 [node name="Panel" type="Panel" parent="Prompt_Screen"]
-margin_top = 68.0
+margin_top = 60.0
 margin_right = 90.0
-margin_bottom = 68.0
+margin_bottom = 60.0
 
 [connection signal="area_entered" from="Game_Screen/Urinal/Urinal_Collision" to="." method="_on_Urinal_Collision_area_entered"]
 [connection signal="area_exited" from="Game_Screen/Urinal/Urinal_Collision" to="." method="_on_Urinal_Collision_area_exited"]
