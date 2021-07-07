@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Minigames/Beer_Pong/Beer_Pong.gd" type="Script" id=1]
 [ext_resource path="res://Images/Character_Standing.png" type="Texture" id=2]
@@ -16,9 +16,12 @@
 extents = Vector2( 25, 4 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2, 3 )
+extents = Vector2( 2, 2 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2, 1 )
+
+[sub_resource type="GDScript" id=4]
 script/source = "extends Node2D
 
 onready var pong = $Pong
@@ -28,11 +31,11 @@ onready var pong = $Pong
 
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=5]
 
-[sub_resource type="Theme" id=5]
+[sub_resource type="Theme" id=6]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 3.0
 step = 1.0
 tracks/0/type = "value"
@@ -48,14 +51,14 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 20
 font_data = ExtResource( 6 )
 
-[sub_resource type="SegmentShape2D" id=8]
+[sub_resource type="SegmentShape2D" id=9]
 b = Vector2( 90, 0 )
 
-[sub_resource type="SegmentShape2D" id=9]
+[sub_resource type="SegmentShape2D" id=10]
 a = Vector2( -1, -151 )
 
 [node name="Node" type="Node"]
@@ -96,13 +99,20 @@ z_index = 1
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cup"]
-position = Vector2( 1, 3 )
+position = Vector2( 1, 4 )
 z_index = 1
 shape = SubResource( 2 )
 
+[node name="Ball_area" type="Area2D" parent="Cup"]
+
+[node name="Ball_area_shape" type="CollisionShape2D" parent="Cup/Ball_area"]
+position = Vector2( 1, 1 )
+z_index = 1
+shape = SubResource( 3 )
+
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 23, 116 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -142,7 +152,7 @@ margin_top = 5.0
 margin_right = 93.0
 margin_bottom = 21.0
 text = "strength: 0"
-script = SubResource( 4 )
+script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -165,8 +175,8 @@ texture = ExtResource( 10 )
 
 [node name="Prompt" type="Label" parent="Prompt_Screen"]
 margin_right = 90.0
-margin_bottom = 8.0
-theme = SubResource( 5 )
+margin_bottom = 16.0
+theme = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hit the cup"
 align = 1
@@ -180,7 +190,7 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Prompt_Screen/Clock"]
 autoplay = "ClockAnim"
-anims/ClockAnim = SubResource( 6 )
+anims/ClockAnim = SubResource( 7 )
 
 [node name="Start_Timer" type="Timer" parent="Prompt_Screen"]
 autostart = true
@@ -190,7 +200,7 @@ visible = false
 margin_top = 46.0
 margin_right = 90.0
 margin_bottom = 75.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "4"
 align = 1
@@ -202,14 +212,14 @@ autowrap = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport/viewport1"]
 position = Vector2( 0, 138 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="viewport2" type="KinematicBody2D" parent="Viewport"]
 position = Vector2( 0, 162 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport/viewport2"]
 position = Vector2( 91, -12 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="viewport3" type="KinematicBody2D" parent="Viewport"]
 position = Vector2( -90, 163 )
@@ -219,7 +229,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport/viewport3"]
 position = Vector2( 91, -12 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="NextMinigame" type="Button" parent="."]
 visible = false
@@ -236,10 +246,11 @@ __meta__ = {
 stream = ExtResource( 11 )
 pitch_scale = 1.75
 
+[connection signal="body_entered" from="Cup/Ball_area" to="." method="_on_Ball_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="pong_timer" to="Player/Pong" method="_on_Pong_timeout"]
-[connection signal="timeout" from="pong_timer" to="Timer2/pong_force" method="_on_Pong_timeout"]
 [connection signal="timeout" from="pong_timer" to="." method="_on_pong_timer_timeout"]
+[connection signal="timeout" from="pong_timer" to="Timer2/pong_force" method="_on_Pong_timeout"]
 [connection signal="timeout" from="Prompt_Screen/Start_Timer" to="." method="_on_Start_Timer_timeout"]
 [connection signal="pressed" from="NextMinigame" to="." method="_on_NextMinigame_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

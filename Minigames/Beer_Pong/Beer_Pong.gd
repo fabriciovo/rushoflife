@@ -7,7 +7,7 @@ onready var prompt = $Prompt_Screen
 onready var timer = $Timer2
 onready var points = $Points
 onready var b_next_minigame = $NextMinigame
-var minigame_end = "res://Scenes/PartyTransition.tscn"
+var minigame_end = "res://Scenes/Minigame_end.tscn"
 
 var start_Timer_CountDown = 3
 var difficulty = 5
@@ -18,7 +18,8 @@ var mouse_pressed = false
 func _process(delta):
 		pong.checkVelocity() 
 		if pong.velocity_zero:
-			b_next_minigame.show()
+			Global.win = false
+			Next_Scene()
 
 
 func _input(event): 
@@ -62,3 +63,9 @@ func _on_NextMinigame_pressed():
 
 func _on_AudioStreamPlayer_finished():
 	Next_Scene()
+
+
+func _on_Ball_area_body_entered(body):
+	if body.name == "Pong":
+		Global.win = true
+		Next_Scene()

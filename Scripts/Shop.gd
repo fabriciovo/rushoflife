@@ -15,26 +15,29 @@ func _ready():
 	money.text = "$: " + str(GameController.Money)
 	sanity.text = "Sanity: " + str(GameController.Sanity)
 
-	
+func _process(delta):
+	life.text = "Life: " + str(GameController.Life)
+	money.text = "$: " + str(GameController.Money)
+	sanity.text = "Sanity: " + str(GameController.Sanity)
 
 
 func _on_OptionA_mouse_entered():
 	price = 5
-	txt_desc.text = "Recover 5 of Life " + "$: " + str(price)
+	txt_desc.text = "Recover 5 Life " + "$: " + str(price)
 	
 	
 
 
 func _on_OptionB_mouse_entered():
 	price = 10
-	txt_desc.text = "Recover 10 of Life " + "$: " + str(price)
+	txt_desc.text = "Recover 10 Life " + "$: " + str(price)
 
 	
 
 
 func _on_OptionC_mouse_entered():
 	price = 5
-	txt_desc.text = "Recover 5 of Sanity " + "$: " + str(price)
+	txt_desc.text = "Recover 5 Sanity " + "$: " + str(price)
 
 	
 
@@ -42,18 +45,33 @@ func _on_OptionC_mouse_entered():
 func _on_OptionA_pressed():
 	$AudioStreamPlayer.pitch_scale = 2
 	$AudioStreamPlayer.play()
+	if(GameController.Money > 5 && GameController.Life < 10):
+		GameController.Life += price
+		GameController.Money -= price
+		if(GameController.Life >= 10):
+			GameController.Life = 10
 	pass # Replace with function body.
 
 
 func _on_OptionB_pressed():
 	$AudioStreamPlayer.pitch_scale = 2
 	$AudioStreamPlayer.play()
+	if(GameController.Money > 10 && GameController.Life < 10):
+		GameController.Life += price
+		GameController.Money -= price
+		if(GameController.Life >= 10):
+			GameController.Life = 10
 	pass # Replace with function body.
 
 
 func _on_OptionC_pressed():
 	$AudioStreamPlayer.pitch_scale = 2
 	$AudioStreamPlayer.play()
+	if(GameController.Money > 5 && GameController.Sanity < 5):
+		GameController.Sanity += price
+		GameController.Money -= price
+		if(GameController.Sanity >= 5):
+			GameController.Sanity = 5
 	pass # Replace with function body.
 
 

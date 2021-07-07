@@ -66,6 +66,6 @@ func Game_Menu():
 
 
 func Door_game():
-	var game_menu = "res://Minigames/open_the_door/open_the_door.tscn"
+	var game_menu = "res://Minigames/Open_The_Door/Open_The_Door.tscn"
 	get_tree().change_scene(game_menu)
 

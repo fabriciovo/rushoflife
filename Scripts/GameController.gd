@@ -8,9 +8,9 @@ const _Player = preload("res://Assets/Player.tres")
 export var Level = 0 setget set_Level
 export var Stage = 0 setget set_Stage
 export var Score = 0 setget set_Score
-export var Life = 5 setget set_Life
+export var Life = 10 setget set_Life
 export var Sanity = 5 setget set_Sanity
-export var Money = 100 setget set_Money
+export var Money = 10 setget set_Money
 
 var TransitionImage0: Texture
 var TransitionImage1: Texture
